@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff"><link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png"><title>Maschinenbau KWR</title>
+<style>
+:root{--bg:#fff;--fg:#3a3a3a;--ac:#d62828;--ln:color-mix(in srgb,var(--fg) 22%,var(--bg))}
+:root.dk{--bg:#2e2e2e;--fg:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px system-ui,sans-serif;user-select:none}
+body.g{padding-bottom:calc(150px + env(safe-area-inset-bottom))}
+.hd{display:flex;align-items:center;gap:10px;padding:12px 16px;padding-top:calc(12px + env(safe-area-inset-top));border-bottom:1px solid var(--ln)}
+h1{font-size:19px;margin:0;flex:1}
+.pad{padding:8px 16px}
+.b{background:none;border:1px solid var(--fg);color:var(--fg);border-radius:10px;padding:8px 12px;font:inherit;font-size:15px}
+.p{background:var(--ac);border-color:var(--ac);color:#fff}
+.cd{display:block;width:100%;text-align:left;margin:10px 0;padding:14px;border:1px solid var(--ln);border-radius:14px;background:var(--bg);color:var(--fg);font:inherit}
+.bar{height:6px;background:var(--ln);border-radius:3px;margin:8px 0 6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
+.tl{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
+.tl button{aspect-ratio:1;border:1px solid var(--fg);border-radius:12px;background:var(--bg);color:var(--fg);font:600 17px system-ui}
+.tl .dn{background:var(--ac);border-color:var(--ac);color:#fff}
+#g{display:grid;gap:2px;justify-content:center;margin:14px auto}
+.c{width:var(--s);height:var(--s);position:relative;border:1.5px solid var(--fg);background:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:calc(var(--s)*.55)}
+.c.e{border:0;background:none}
+.c.w{background:color-mix(in srgb,var(--ac) 20%,var(--bg))}
+.c.x{background:color-mix(in srgb,#e8a400 60%,var(--bg))}
+.c.s{background:var(--ac);color:#fff}
+.c small{position:absolute;top:1px;left:2px;font-size:calc(var(--s)*.28);line-height:1;font-weight:600}
+.q{padding:7px 0;border-bottom:1px solid var(--ln);font-size:15px}.q small{opacity:.6}
+h2{font-size:16px;margin:16px 0 4px}
+.kb{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--ln);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+.cl{display:flex;gap:8px;align-items:center;padding:2px 6px 6px;font-size:14px;min-height:46px}.cl span{flex:1}
+.r{display:flex}.r button{flex:1;height:38px;margin:2px;border:1px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--fg);font:600 17px system-ui;padding:0}
+.sw{display:flex;gap:10px;margin-top:10px;align-items:center;flex-wrap:wrap}.sw i{width:34px;height:34px;border-radius:50%}.sw .on{outline:3px solid var(--fg);outline-offset:2px}
+.sw input{width:40px;height:40px;border:0;padding:0;background:none}
+</style></head><body><div id="a"></div><script>
+const CATS=[
+["Maschinenbau allgemein","WELLE|Dreht sich und überträgt Drehmoment;ZAHNRAD|Formschlüssiges Übertragungselement mit Zähnen;LAGER|Stützt rotierende Bauteile;KUPPLUNG|Verbindet zwei Wellen;SCHRAUBE|Lösbare Verbindung mit Gewinde;GEWINDE|Schraubenförmige Rille;FEDER|Speichert elastisch Energie;RIEMEN|Flexibles Zugmittel im Antrieb;KETTE|Zugmittel aus Gliedern;BREMSE|Verzögert Bewegung durch Reibung;GETRIEBE|Wandelt Drehzahl und Drehmoment;TOLERANZ|Zulässige Maßabweichung;PASSUNG|Zusammenspiel von Welle und Bohrung;FRÄSEN|Spanen mit rotierendem Werkzeug;DREHEN|Spanen mit rotierendem Werkstück;BOHREN|Erzeugt runde Löcher;SCHLEIFEN|Feinbearbeitung mit Schleifscheibe;NIETE|Unlösbares Verbindungselement;STAHL|Eisenlegierung mit wenig Kohlenstoff;ALUMINIUM|Leichtmetall mit Zeichen Al;SCHMIEDEN|Umformen durch Hammerschläge;WERKSTOFF|Material für Bauteile;FESTIGKEIT|Widerstand gegen Bruch;HÄRTE|Widerstand gegen Eindringen;SPANNUNG|Kraft pro Fläche;DREHMOMENT|Kraft mal Hebelarm;WIRKUNGSGRAD|Verhältnis von Nutzen zu Aufwand;LEISTUNG|Arbeit pro Zeit;ACHSE|Trägt Räder, überträgt kein Moment;SCHWUNGRAD|Speichert Rotationsenergie;PASSFEDER|Sichert Nabe gegen Verdrehen;SPINDEL|Gewindewelle oder Werkzeugträger;GUSS|Fertigung durch Gießen;NABE|Teil des Rades, sitzt auf der Welle"],
+["Verbrennungsmotoren","KOLBEN|Gleitet im Zylinder auf und ab;ZYLINDER|Gehäuse des Brennraums;PLEUEL|Verbindet Kolben und Kurbelwelle;KURBELWELLE|Wandelt Hub in Drehung;NOCKENWELLE|Steuert die Ventile;VENTIL|Öffnet und schließt den Gaswechsel;ZÜNDKERZE|Entzündet das Gemisch beim Ottomotor;DIESEL|Selbstzünder-Kraftstoff;OTTO|Erfinder des Viertaktmotors;VERGASER|Mischt Kraftstoff und Luft;EINSPRITZUNG|Bringt Kraftstoff in den Brennraum;TURBOLADER|Verdichtet Ansaugluft mit Abgas;ABGAS|Verbrannte Gase;KATALYSATOR|Reinigt Abgase chemisch;AUSPUFF|Leitet Abgase ab;TAKT|Abschnitt des Arbeitsspiels;VERDICHTUNG|Zusammendrücken des Gemischs;ZÜNDUNG|Start der Verbrennung;HUBRAUM|Volumen aller Zylinder;HUB|Weg des Kolbens;BOHRUNG|Zylinderdurchmesser;KOLBENRING|Dichtet Kolben zum Zylinder ab;ZYLINDERKOPF|Schließt den Brennraum oben ab;ÖLPUMPE|Fördert Schmieröl;SCHMIERUNG|Reibungsminderung durch Öl;KÜHLUNG|Führt Motorwärme ab;KÜHLER|Gibt Wärme an die Luft ab;SCHWUNGRAD|Gleicht Drehungleichförmigkeit aus;WANKEL|Erfinder des Kreiskolbenmotors;OKTANZAHL|Klopffestigkeit von Benzin;ZÜNDFOLGE|Reihenfolge der Zündungen;DROSSEL|Regelt die Luftmenge;BENZIN|Kraftstoff für Ottomotoren;SAUGROHR|Führt Frischluft zum Zylinder"],
+["Thermodynamik","ENTROPIE|Maß für Unordnung;ENTHALPIE|Wärmeinhalt bei konstantem Druck;ENERGIE|Fähigkeit, Arbeit zu verrichten;WÄRME|Energie durch Temperaturunterschied;TEMPERATUR|Maß für mittlere Teilchenenergie;KELVIN|SI-Einheit der Temperatur;DRUCK|Kraft pro Fläche;VOLUMEN|Raumeinnahme eines Körpers;ISOTHERM|Bei konstanter Temperatur;ISOBAR|Bei konstantem Druck;ISOCHOR|Bei konstantem Volumen;ADIABAT|Ohne Wärmeaustausch;KREISPROZESS|Rückkehr zum Ausgangszustand;CARNOT|Franzose, Namensgeber des idealen Kreisprozesses;WÄRMEPUMPE|Hebt Wärme auf höheres Niveau;KÄLTEMITTEL|Arbeitsstoff im Kühlschrank;DAMPF|Gasförmiger Zustand von Wasser;SIEDEN|Verdampfen im Innern der Flüssigkeit;KONDENSATION|Übergang von gasförmig zu flüssig;VERDAMPFER|Hier wird Kältemittel gasförmig;TURBINE|Wandelt Strömung in Drehbewegung;KOMPRESSOR|Verdichtet Gase;GASKONSTANTE|Faktor R im idealen Gasgesetz;WÄRMELEITUNG|Energietransport im Festkörper;KONVEKTION|Wärmetransport durch Strömung;STRAHLUNG|Wärmeübertragung ohne Medium;ARBEIT|Kraft mal Weg;EXERGIE|Nutzbarer Energieanteil;ANERGIE|Nicht nutzbarer Energieanteil;SYSTEM|Betrachteter Bilanzraum;JOULE|Einheit der Energie;TRIPELPUNKT|Alle drei Phasen im Gleichgewicht;RANKINE|Schotte, Dampfkreisprozess;DROSSELUNG|Druckabbau ohne Arbeitsabgabe"],
+["Hydraulik und Pneumatik","PUMPE|Erzeugt Volumenstrom;ZYLINDER|Linearantrieb mit Kolben;HYDRAULIKÖL|Druckflüssigkeit im System;DRUCKLUFT|Verdichtete Luft;KOMPRESSOR|Erzeugt Druckluft;VENTIL|Steuert Richtung oder Druck;WEGEVENTIL|Schaltet die Strömungsrichtung;DROSSEL|Begrenzt den Volumenstrom;SPERRVENTIL|Lässt Fluss nur in eine Richtung zu;FILTER|Hält Schmutz zurück;TANK|Speichert die Druckflüssigkeit;SPEICHER|Nimmt Druckenergie auf;HYDROMOTOR|Wandelt Druck in Drehung;PASCAL|Einheit des Drucks;BAR|Gängige Druckeinheit;SCHLAUCH|Flexible Leitung;DICHTUNG|Verhindert Leckage;LECKAGE|Ungewollter Flüssigkeitsverlust;VOLUMENSTROM|Menge pro Zeit;DRUCKVENTIL|Schützt vor Überdruck;KOLBENSTANGE|Überträgt die Kraft nach außen;STEUERUNG|Legt den Ablauf fest;SENSOR|Erfasst Messgrößen;MAGNETVENTIL|Elektrisch betätigtes Ventil;PRESSE|Hydraulische Umformmaschine;BAGGER|Mobile Maschine mit Hydraulik;HEBEBÜHNE|Hebt Fahrzeuge in der Werkstatt;VISKOSITÄT|Zähigkeit einer Flüssigkeit;KAVITATION|Dampfblasenbildung in der Pumpe;ZAHNRADPUMPE|Pumpe mit zwei Zahnrädern;GREIFER|Pneumatisches Handhabungselement;VAKUUM|Unterdruck-Zustand;PNEUMATIK|Technik mit Druckluft;HYDRAULIK|Technik mit Druckflüssigkeit"],
+["Kunststofftechnik","THERMOPLAST|Lässt sich wiederholt schmelzen;DUROPLAST|Nach dem Aushärten nicht mehr schmelzbar;ELASTOMER|Gummielastischer Kunststoff;POLYMER|Stoff aus Makromolekülen;MONOMER|Einzelner Baustein eines Polymers;SPRITZGUSS|Verfahren für Massenteile;EXTRUSION|Kontinuierliches Pressen durch eine Düse;EXTRUDER|Maschine mit Förderschnecke;SCHNECKE|Fördert und plastifiziert Granulat;GRANULAT|Rohmaterial in Körnerform;WERKZEUG|Gibt dem Spritzling seine Form;SPRITZLING|Fertiges Teil aus der Form;ANGUSS|Kanal für die Schmelze;SCHMELZE|Flüssiger Kunststoff;SCHWINDUNG|Volumenabnahme beim Abkühlen;POLYETHYLEN|Kurz PE, häufigster Kunststoff;POLYPROPYLEN|Kurz PP;POLYAMID|Kurz PA, auch Nylon genannt;PVC|Kurzform für Polyvinylchlorid;ACRYLGLAS|Bruchfester Glasersatz;TIEFZIEHEN|Formen erwärmter Platten mit Unterdruck;BLASFORMEN|Herstellung von Flaschen und Hohlkörpern;KALANDER|Walzenstuhl für Folien;VERNETZUNG|Verbindet Molekülketten;ADDITIV|Zusatzstoff;WEICHMACHER|Macht Kunststoff flexibel;FÜLLSTOFF|Verbessert Eigenschaften oder spart Material;GLASFASER|Verstärkt Kunststoffe;VERBUND|Werkstoff aus mehreren Komponenten;EPOXID|Harz für Klebstoffe und Laminate;SILIKON|Wärmebeständiger Elastomer;RECYCLING|Wiederverwertung;KRISTALLIN|Geordnete Molekülstruktur;AMORPH|Ungeordnete Molekülstruktur;PTFE|Kurzform von Teflon"]
+].map(c=>({n:c[0],w:c[1].split(';').map(x=>x.split('|'))}));
+const COL=['#d62828','#e8710a','#1e88e5','#2e9e5b','#8e44ad','#00a3a3'];
+const KB=['QWERTZUIOPÜ','ASDFGHJKLÖÄ','YXCVBNM'];
+let S=JSON.parse(localStorage.kwr||'{"p":{},"ac":"#d62828"}'),V={v:'h'},cur;
+const sv=()=>localStorage.kwr=JSON.stringify(S);
+function theme(){const d=document.documentElement;d.classList.toggle('dk',!!S.dk);d.style.setProperty('--ac',S.ac);document.querySelector('meta[name=theme-color]').content=S.dk?'#2e2e2e':'#fff'}
+function rng(s){return()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function gen(ws,seed){for(let a0=0;;a0++){
+ const R=rng(seed*997+a0*31+1),W=ws.slice(),G={},P=[];
+ for(let i=W.length-1;i>0;i--){const j=R()*(i+1)|0;[W[i],W[j]]=[W[j],W[i]]}
+ let k=0;for(let i=1;i<5;i++)if(W[i][0].length>W[k][0].length)k=i;
+ const f=W.splice(k,1)[0],at=(r,c)=>G[r+','+c];
+ const put=(x,r,c,d)=>{const p={w:x[0],q:x[1],r,c,d};P.push(p);for(let i=0;i<p.w.length;i++){const y=r+(d=='v'?i:0),z=c+(d=='h'?i:0),g=G[y+','+z]||(G[y+','+z]={ch:p.w[i]});g[d]=1}};
+ const fits=(w,r,c,d)=>{const a=d=='v'?1:0,b=1-a,n=w.length;if(at(r-a,c-b)||at(r+a*n,c+b*n))return 0;let x=0;for(let i=0;i<n;i++){const y=r+a*i,z=c+b*i,g=at(y,z);if(g){if(g.ch!=w[i]||g[d])return 0;x++}else if(at(y+b,z+a)||at(y-b,z-a))return 0}return x};
+ const bb=()=>{let a=1e9,b=-1e9,c=1e9,d=-1e9;for(const p of P){const n=p.w.length-1,e=p.d=='h'?[p.r,p.c+n]:[p.r+n,p.c];a=Math.min(a,p.r);b=Math.max(b,e[0]);c=Math.min(c,p.c);d=Math.max(d,e[1])}return[a,b,c,d]};
+ put(f,0,0,'h');
+ for(const x of W){if(P.length>=10)break;const w=x[0],o=[],[a,b,c,d]=bb();
+  for(const p of P)for(let i=0;i<p.w.length;i++)for(let j=0;j<w.length;j++)if(p.w[i]==w[j]){
+   const nd=p.d=='h'?'v':'h',cr=p.d=='h'?p.r:p.r+i,cc=p.d=='h'?p.c+i:p.c,r=nd=='v'?cr-j:cr,cl=nd=='h'?cc-j:cc,
+   r2=r+(nd=='v'?w.length-1:0),c2=cl+(nd=='h'?w.length-1:0);
+   if(Math.max(b,r2)-Math.min(a,r)<14&&Math.max(d,c2)-Math.min(c,cl)<12){const s=fits(w,r,cl,nd);if(s)o.push([r,cl,nd,s])}}
+  if(o.length){o.sort((u,v)=>v[3]-u[3]);const t=o[Math.min(o.length-1,R()*3|0)];put(x,t[0],t[1],t[2])}}
+ if(P.length<8)continue;
+ const [a,b,c,d]=bb(),H={};
+ for(const q in G){const[y,z]=q.split(',').map(Number);H[(y-a)+','+(z-c)]=G[q]}
+ for(const p of P){p.r-=a;p.c-=c}
+ P.sort((u,v)=>u.r-v.r||u.c-v.c);let n=0,l='';for(const p of P){const q=p.r+','+p.c;if(q!=l){n++;l=q}p.n=n}
+ return{P,G:H,R:b-a+1,C:d-c+1}}}
+const cnt=i=>Array.from({length:10},(_,n)=>S.p[i+'-'+(n+1)]&&S.p[i+'-'+(n+1)].done).filter(Boolean).length;
+const wa=(r,c,d)=>cur.pz.P.find(p=>p.d==d&&(d=='h'?p.r==r&&c>=p.c&&c<p.c+p.w.length:p.c==c&&r>=p.r&&r<p.r+p.w.length));
+function go(v,i,n){V={v,i,n};if(v=='game'){const pz=gen(CATS[i].w,n),p=pz.P[0];cur={pz,u:(S.p[i+'-'+n]||{}).u||{},sel:[p.r,p.c],dir:p.d,bad:{},done:(S.p[i+'-'+n]||{}).done}}render();scrollTo(0,0)}
+function tap(r,c){const s=cur.sel;if(s[0]==r&&s[1]==c&&wa(r,c,'h')&&wa(r,c,'v')||!wa(r,c,cur.dir))cur.dir=cur.dir=='h'?'v':'h';cur.sel=[r,c];render()}
+function pick(r,c,d){cur.dir=d;cur.sel=[r,c];render();scrollTo(0,0)}
+function mv(n){const[r,c]=cur.sel,w=wa(r,c,cur.dir),i=(cur.dir=='h'?c-w.c:r-w.r)+n;if(i<0||i>=w.w.length)return;cur.sel=cur.dir=='h'?[w.r,w.c+i]:[w.r+i,w.c]}
+function key(ch){const[r,c]=cur.sel,k=r+','+c;delete cur.bad[k];
+ if(ch=='<'){if(cur.u[k])delete cur.u[k];else{mv(-1);delete cur.u[cur.sel.join()]}}else{cur.u[k]=ch;mv(1)}
+ cur.done=Object.keys(cur.pz.G).every(q=>cur.u[q]==cur.pz.G[q].ch);
+ S.p[V.i+'-'+V.n]={u:cur.u,done:cur.done};sv();render()}
+function chk(){cur.bad={};for(const q in cur.u)if(cur.u[q]!=cur.pz.G[q].ch)cur.bad[q]=1;render()}
+function hint(){const k=cur.sel.join();cur.u[k]=cur.pz.G[k].ch;key(cur.u[k])}
+const ac=(x,r)=>{S.ac=x;sv();theme();r&&render()};
+function render(){document.body.className=V.v=='game'?'g':'';let h='';
+ if(V.v=='h')h=`<div class=hd><h1>Maschinenbau KWR</h1><button class=b onclick="go('set')">⚙</button></div><div class=pad>${CATS.map((c,i)=>`<button class=cd onclick="go('cat',${i})"><b>${c.n}</b><div class=bar><i style="width:${cnt(i)*10}%"></i></div><small>${cnt(i)} von 10 gelöst</small></button>`).join('')}</div>`;
+ else if(V.v=='set')h=`<div class=hd><button class=b onclick="go('h')">‹</button><h1>Einstellungen</h1></div><div class=pad><button class=cd onclick="S.dk=!S.dk;sv();theme();render()"><b>Darkmode</b> – ${S.dk?'an':'aus'}</button><div class=cd><b>Akzentfarbe</b><div class=sw>${COL.map(x=>`<i class="${x==S.ac?'on':''}" style="background:${x}" onclick="ac('${x}',1)"></i>`).join('')}<input type=color value="${S.ac}" oninput="ac(this.value)"></div></div></div>`;
+ else if(V.v=='cat')h=`<div class=hd><button class=b onclick="go('h')">‹</button><h1>${CATS[V.i].n}</h1></div><div class=pad><div class=tl>${Array.from({length:10},(_,n)=>{const d=S.p[V.i+'-'+(n+1)]&&S.p[V.i+'-'+(n+1)].done;return`<button class="${d?'dn':''}" onclick="go('game',${V.i},${n+1})">${n+1}${d?' ✓':''}</button>`}).join('')}</div></div>`;
+ else{const z=cur.pz,s=Math.max(24,Math.min(44,Math.floor((innerWidth-24)/z.C))),aw=wa(cur.sel[0],cur.sel[1],cur.dir),num={};z.P.forEach(p=>num[p.r+','+p.c]=p.n);
+  let g='';for(let r=0;r<z.R;r++)for(let c=0;c<z.C;c++){const k=r+','+c;if(!z.G[k]){g+='<div class="c e"></div>';continue}
+   const inw=cur.dir=='h'?r==aw.r&&c>=aw.c&&c<aw.c+aw.w.length:c==aw.c&&r>=aw.r&&r<aw.r+aw.w.length,sl=cur.sel[0]==r&&cur.sel[1]==c;
+   g+=`<div class="c${sl?' s':inw?' w':''}${cur.bad[k]?' x':''}" onclick="tap(${r},${c})">${num[k]?`<small>${num[k]}</small>`:''}${cur.u[k]||''}</div>`}
+  const L=d=>z.P.filter(p=>p.d==d).map(p=>`<div class=q onclick="pick(${p.r},${p.c},'${d}')"><b>${p.n}</b> ${p.q} <small>(${p.w.length})</small></div>`).join('');
+  h=`<div class=hd><button class=b onclick="go('cat',${V.i})">‹</button><h1>${CATS[V.i].n} ${V.n}</h1></div><div id=g style="--s:${s}px;grid-template-columns:repeat(${z.C},var(--s))">${g}</div><div class=pad><h2>Waagerecht</h2>${L('h')}<h2>Senkrecht</h2>${L('v')}</div>
+  <div class=kb><div class=cl>${cur.done?`<span><b>Gelöst!</b> Alle Begriffe stimmen.</span><button class="b p" onclick="go('cat',${V.i})">Weiter</button>`:`<span><b>${aw.n} ${cur.dir=='h'?'waagerecht':'senkrecht'}:</b> ${aw.q} (${aw.w.length})</span><button class=b onclick=chk()>Prüfen</button><button class=b onclick=hint()>Tipp</button>`}</div>
+  ${KB.map((r,i)=>`<div class=r>${[...r].map(l=>`<button onclick="key('${l}')">${l}</button>`).join('')}${i==2?'<button style="flex:2" onclick="key(\'<\')">⌫</button>':''}</div>`).join('')}</div>`}
+ document.getElementById('a').innerHTML=h}
+theme();render();
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');
+</script></body></html>
