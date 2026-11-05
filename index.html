@@ -3,36 +3,52 @@
 <meta name="theme-color" content="#ffffff"><link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png"><title>Maschinenbau KWR</title>
 <style>
-:root{--bg:#fff;--fg:#3a3a3a;--ac:#d62828;--ln:color-mix(in srgb,var(--fg) 22%,var(--bg))}
+:root{--bg:#fff;--fg:#3a3a3a;--ac:hsl(0 75% 48%);--ln:color-mix(in srgb,var(--fg) 22%,var(--bg))}
 :root.dk{--bg:#2e2e2e;--fg:#fff}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px system-ui,sans-serif;user-select:none}
-body.g{padding-bottom:calc(150px + env(safe-area-inset-bottom))}
-.hd{display:flex;align-items:center;gap:10px;padding:12px 16px;padding-top:calc(12px + env(safe-area-inset-top));border-bottom:1px solid var(--ln)}
-h1{font-size:19px;margin:0;flex:1}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font:16px system-ui,sans-serif;user-select:none;overscroll-behavior:none}
+body.g{overflow:hidden}
+#a.g{height:100dvh;display:flex;flex-direction:column}
+.hd{display:flex;align-items:center;gap:8px;padding:10px 56px 10px 14px;padding-top:calc(10px + env(safe-area-inset-top));border-bottom:1px solid var(--ln);min-height:56px}
+h1{font-size:18px;margin:0;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pad{padding:8px 16px}
 .b{background:none;border:1px solid var(--fg);color:var(--fg);border-radius:10px;padding:8px 12px;font:inherit;font-size:15px}
 .p{background:var(--ac);border-color:var(--ac);color:#fff}
+#gear{position:fixed;top:calc(env(safe-area-inset-top) + 9px);right:10px;z-index:30;background:none;border:0;color:var(--fg);padding:6px}
 .cd{display:block;width:100%;text-align:left;margin:10px 0;padding:14px;border:1px solid var(--ln);border-radius:14px;background:var(--bg);color:var(--fg);font:inherit}
 .bar{height:6px;background:var(--ln);border-radius:3px;margin:8px 0 6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
-.tl{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
-.tl button{aspect-ratio:1;border:1px solid var(--fg);border-radius:12px;background:var(--bg);color:var(--fg);font:600 17px system-ui}
-.tl .dn{background:var(--ac);border-color:var(--ac);color:#fff}
-#g{display:grid;gap:2px;justify-content:center;margin:14px auto}
-.c{width:var(--s);height:var(--s);position:relative;border:1.5px solid var(--fg);background:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:calc(var(--s)*.55)}
+.tl{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px}
+.tb{aspect-ratio:1;padding:4px;border:0;border-radius:15px;background:conic-gradient(var(--ac) calc(var(--f)*3.6deg),var(--ln) 0)}
+.tb span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:11px;background:var(--bg);color:var(--fg);font:600 17px system-ui}
+#v{flex:1;position:relative;overflow:hidden;touch-action:none}
+#g{position:absolute;left:0;top:0;display:grid;grid-auto-rows:68px;will-change:transform}
+.c{width:68px;height:68px;border:1.5px solid var(--fg);background:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:34px;position:relative}
 .c.e{border:0;background:none}
-.c.w{background:color-mix(in srgb,var(--ac) 20%,var(--bg))}
+.c.k{border:1px solid var(--ln);background:color-mix(in srgb,var(--fg) 11%,var(--bg));font-weight:500;line-height:1.1;padding:3px;text-align:center;overflow:hidden;hyphens:auto;word-break:break-word}
+.k b{position:absolute;font-size:9px;color:var(--ac)}
+.k.h{padding-right:12px}.k.h b{right:2px;top:calc(50% - 6px)}
+.k.v{padding-bottom:12px}.k.v b{bottom:1px;left:calc(50% - 5px)}
+.c.w{background:color-mix(in srgb,var(--fg) 13%,var(--bg))}
+.c.t{color:var(--ac)}
 .c.x{background:color-mix(in srgb,#e8a400 60%,var(--bg))}
-.c.s{background:var(--ac);color:#fff}
-.c small{position:absolute;top:1px;left:2px;font-size:calc(var(--s)*.28);line-height:1;font-weight:600}
-.q{padding:7px 0;border-bottom:1px solid var(--ln);font-size:15px}.q small{opacity:.6}
-h2{font-size:16px;margin:16px 0 4px}
-.kb{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--ln);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
-.cl{display:flex;gap:8px;align-items:center;padding:2px 6px 6px;font-size:14px;min-height:46px}.cl span{flex:1}
+.c.f{background:var(--ac);border-color:var(--ac);color:#fff}
+.c.s{outline:3px solid var(--ac);outline-offset:-3px}
+.c.s:not(.f){background:color-mix(in srgb,var(--fg) 22%,var(--bg))}
+.c.f.s{outline-color:var(--fg)}
+.kb{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bg);border-top:1px solid var(--ln);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
 .r{display:flex}.r button{flex:1;height:38px;margin:2px;border:1px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--fg);font:600 17px system-ui;padding:0}
-.sw{display:flex;gap:10px;margin-top:10px;align-items:center;flex-wrap:wrap}.sw i{width:34px;height:34px;border-radius:50%}.sw .on{outline:3px solid var(--fg);outline-offset:2px}
-.sw input{width:40px;height:40px;border:0;padding:0;background:none}
-</style></head><body><div id="a"></div><script>
+.dc{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:20;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-radius:14px;background:var(--bg);border:2px solid var(--ac)}
+#ring{position:relative;width:230px;height:230px;margin:18px auto 8px;border-radius:50%;touch-action:none;background:conic-gradient(hsl(0 75% 48%),hsl(60 75% 48%),hsl(120 75% 48%),hsl(180 75% 48%),hsl(240 75% 48%),hsl(300 75% 48%),hsl(360 75% 48%))}
+#ring div{position:absolute;pointer-events:none}
+#ctr{inset:34px;border-radius:50%;background:var(--bg)}
+#knob{width:30px;height:30px;left:calc(50% - 15px);top:calc(50% - 15px);border-radius:50%;background:var(--ac);border:4px solid #fff;box-shadow:0 0 0 1.5px #3a3a3a}
+.sl{display:flex;gap:6px;justify-content:center;margin:14px 0}
+.sl i{font-style:normal;width:36px;height:46px;border:1.5px solid var(--fg);border-radius:8px;display:flex;align-items:center;justify-content:center;font:700 22px system-ui;color:var(--ac)}
+.lt{width:38px;height:48px;border:1.5px solid var(--fg);border-radius:8px;background:var(--bg);color:var(--fg);font:700 22px system-ui;padding:0}
+.lt.u{opacity:.2}.lt.bd{animation:sh .3s;border-color:var(--ac)}
+@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+</style></head><body><button id="gear" onclick="gear()" aria-label="Einstellungen"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="8.8" stroke-width="3.4" stroke-dasharray="3.456 3.456"/><circle cx="12" cy="12" r="6.4" stroke-width="2"/><circle cx="12" cy="12" r="2.6" stroke-width="2"/></svg></button><div id="a"></div><script>
 const CATS=[
 ["Maschinenbau allgemein","WELLE|Dreht sich und überträgt Drehmoment;ZAHNRAD|Formschlüssiges Übertragungselement mit Zähnen;LAGER|Stützt rotierende Bauteile;KUPPLUNG|Verbindet zwei Wellen;SCHRAUBE|Lösbare Verbindung mit Gewinde;GEWINDE|Schraubenförmige Rille;FEDER|Speichert elastisch Energie;RIEMEN|Flexibles Zugmittel im Antrieb;KETTE|Zugmittel aus Gliedern;BREMSE|Verzögert Bewegung durch Reibung;GETRIEBE|Wandelt Drehzahl und Drehmoment;TOLERANZ|Zulässige Maßabweichung;PASSUNG|Zusammenspiel von Welle und Bohrung;FRÄSEN|Spanen mit rotierendem Werkzeug;DREHEN|Spanen mit rotierendem Werkstück;BOHREN|Erzeugt runde Löcher;SCHLEIFEN|Feinbearbeitung mit Schleifscheibe;NIETE|Unlösbares Verbindungselement;STAHL|Eisenlegierung mit wenig Kohlenstoff;ALUMINIUM|Leichtmetall mit Zeichen Al;SCHMIEDEN|Umformen durch Hammerschläge;WERKSTOFF|Material für Bauteile;FESTIGKEIT|Widerstand gegen Bruch;HÄRTE|Widerstand gegen Eindringen;SPANNUNG|Kraft pro Fläche;DREHMOMENT|Kraft mal Hebelarm;WIRKUNGSGRAD|Verhältnis von Nutzen zu Aufwand;LEISTUNG|Arbeit pro Zeit;ACHSE|Trägt Räder, überträgt kein Moment;SCHWUNGRAD|Speichert Rotationsenergie;PASSFEDER|Sichert Nabe gegen Verdrehen;SPINDEL|Gewindewelle oder Werkzeugträger;GUSS|Fertigung durch Gießen;NABE|Teil des Rades, sitzt auf der Welle"],
 ["Verbrennungsmotoren","KOLBEN|Gleitet im Zylinder auf und ab;ZYLINDER|Gehäuse des Brennraums;PLEUEL|Verbindet Kolben und Kurbelwelle;KURBELWELLE|Wandelt Hub in Drehung;NOCKENWELLE|Steuert die Ventile;VENTIL|Öffnet und schließt den Gaswechsel;ZÜNDKERZE|Entzündet das Gemisch beim Ottomotor;DIESEL|Selbstzünder-Kraftstoff;OTTO|Erfinder des Viertaktmotors;VERGASER|Mischt Kraftstoff und Luft;EINSPRITZUNG|Bringt Kraftstoff in den Brennraum;TURBOLADER|Verdichtet Ansaugluft mit Abgas;ABGAS|Verbrannte Gase;KATALYSATOR|Reinigt Abgase chemisch;AUSPUFF|Leitet Abgase ab;TAKT|Abschnitt des Arbeitsspiels;VERDICHTUNG|Zusammendrücken des Gemischs;ZÜNDUNG|Start der Verbrennung;HUBRAUM|Volumen aller Zylinder;HUB|Weg des Kolbens;BOHRUNG|Zylinderdurchmesser;KOLBENRING|Dichtet Kolben zum Zylinder ab;ZYLINDERKOPF|Schließt den Brennraum oben ab;ÖLPUMPE|Fördert Schmieröl;SCHMIERUNG|Reibungsminderung durch Öl;KÜHLUNG|Führt Motorwärme ab;KÜHLER|Gibt Wärme an die Luft ab;SCHWUNGRAD|Gleicht Drehungleichförmigkeit aus;WANKEL|Erfinder des Kreiskolbenmotors;OKTANZAHL|Klopffestigkeit von Benzin;ZÜNDFOLGE|Reihenfolge der Zündungen;DROSSEL|Regelt die Luftmenge;BENZIN|Kraftstoff für Ottomotoren;SAUGROHR|Führt Frischluft zum Zylinder"],
@@ -40,59 +56,78 @@ const CATS=[
 ["Hydraulik und Pneumatik","PUMPE|Erzeugt Volumenstrom;ZYLINDER|Linearantrieb mit Kolben;HYDRAULIKÖL|Druckflüssigkeit im System;DRUCKLUFT|Verdichtete Luft;KOMPRESSOR|Erzeugt Druckluft;VENTIL|Steuert Richtung oder Druck;WEGEVENTIL|Schaltet die Strömungsrichtung;DROSSEL|Begrenzt den Volumenstrom;SPERRVENTIL|Lässt Fluss nur in eine Richtung zu;FILTER|Hält Schmutz zurück;TANK|Speichert die Druckflüssigkeit;SPEICHER|Nimmt Druckenergie auf;HYDROMOTOR|Wandelt Druck in Drehung;PASCAL|Einheit des Drucks;BAR|Gängige Druckeinheit;SCHLAUCH|Flexible Leitung;DICHTUNG|Verhindert Leckage;LECKAGE|Ungewollter Flüssigkeitsverlust;VOLUMENSTROM|Menge pro Zeit;DRUCKVENTIL|Schützt vor Überdruck;KOLBENSTANGE|Überträgt die Kraft nach außen;STEUERUNG|Legt den Ablauf fest;SENSOR|Erfasst Messgrößen;MAGNETVENTIL|Elektrisch betätigtes Ventil;PRESSE|Hydraulische Umformmaschine;BAGGER|Mobile Maschine mit Hydraulik;HEBEBÜHNE|Hebt Fahrzeuge in der Werkstatt;VISKOSITÄT|Zähigkeit einer Flüssigkeit;KAVITATION|Dampfblasenbildung in der Pumpe;ZAHNRADPUMPE|Pumpe mit zwei Zahnrädern;GREIFER|Pneumatisches Handhabungselement;VAKUUM|Unterdruck-Zustand;PNEUMATIK|Technik mit Druckluft;HYDRAULIK|Technik mit Druckflüssigkeit"],
 ["Kunststofftechnik","THERMOPLAST|Lässt sich wiederholt schmelzen;DUROPLAST|Nach dem Aushärten nicht mehr schmelzbar;ELASTOMER|Gummielastischer Kunststoff;POLYMER|Stoff aus Makromolekülen;MONOMER|Einzelner Baustein eines Polymers;SPRITZGUSS|Verfahren für Massenteile;EXTRUSION|Kontinuierliches Pressen durch eine Düse;EXTRUDER|Maschine mit Förderschnecke;SCHNECKE|Fördert und plastifiziert Granulat;GRANULAT|Rohmaterial in Körnerform;WERKZEUG|Gibt dem Spritzling seine Form;SPRITZLING|Fertiges Teil aus der Form;ANGUSS|Kanal für die Schmelze;SCHMELZE|Flüssiger Kunststoff;SCHWINDUNG|Volumenabnahme beim Abkühlen;POLYETHYLEN|Kurz PE, häufigster Kunststoff;POLYPROPYLEN|Kurz PP;POLYAMID|Kurz PA, auch Nylon genannt;PVC|Kurzform für Polyvinylchlorid;ACRYLGLAS|Bruchfester Glasersatz;TIEFZIEHEN|Formen erwärmter Platten mit Unterdruck;BLASFORMEN|Herstellung von Flaschen und Hohlkörpern;KALANDER|Walzenstuhl für Folien;VERNETZUNG|Verbindet Molekülketten;ADDITIV|Zusatzstoff;WEICHMACHER|Macht Kunststoff flexibel;FÜLLSTOFF|Verbessert Eigenschaften oder spart Material;GLASFASER|Verstärkt Kunststoffe;VERBUND|Werkstoff aus mehreren Komponenten;EPOXID|Harz für Klebstoffe und Laminate;SILIKON|Wärmebeständiger Elastomer;RECYCLING|Wiederverwertung;KRISTALLIN|Geordnete Molekülstruktur;AMORPH|Ungeordnete Molekülstruktur;PTFE|Kurzform von Teflon"]
 ].map(c=>({n:c[0],w:c[1].split(';').map(x=>x.split('|'))}));
-const COL=['#d62828','#e8710a','#1e88e5','#2e9e5b','#8e44ad','#00a3a3'];
-const KB=['QWERTZUIOPÜ','ASDFGHJKLÖÄ','YXCVBNM'];
-let S=JSON.parse(localStorage.kwr||'{"p":{},"ac":"#d62828"}'),V={v:'h'},cur;
-const sv=()=>localStorage.kwr=JSON.stringify(S);
-function theme(){const d=document.documentElement;d.classList.toggle('dk',!!S.dk);d.style.setProperty('--ac',S.ac);document.querySelector('meta[name=theme-color]').content=S.dk?'#2e2e2e':'#fff'}
+const KB=['QWERTZUIOPÜ','ASDFGHJKLÖÄ','YXCVBNM'],S0=68,KH=150;
+let S=JSON.parse(localStorage.kwr2||'{}'),V={v:'splash'},cur,sp,mvd=0;
+S.p=S.p||{};if(S.h==null)S.h=0;
+const $=i=>document.getElementById(i),sv=()=>localStorage.kwr2=JSON.stringify(S),cl=(v,r)=>Math.min(r[1],Math.max(r[0],v));
+function theme(){const d=document.documentElement;d.classList.toggle('dk',!!S.dk);d.style.setProperty('--ac',`hsl(${S.h} 75% 48%)`);document.querySelector('meta[name=theme-color]').content=S.dk?'#2e2e2e':'#ffffff'}
 function rng(s){return()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 function gen(ws,seed){for(let a0=0;;a0++){
- const R=rng(seed*997+a0*31+1),W=ws.slice(),G={},P=[];
+ const R=rng(seed*997+a0*31+1),W=ws.slice(),G={},K={},P=[];
  for(let i=W.length-1;i>0;i--){const j=R()*(i+1)|0;[W[i],W[j]]=[W[j],W[i]]}
  let k=0;for(let i=1;i<5;i++)if(W[i][0].length>W[k][0].length)k=i;
  const f=W.splice(k,1)[0],at=(r,c)=>G[r+','+c];
- const put=(x,r,c,d)=>{const p={w:x[0],q:x[1],r,c,d};P.push(p);for(let i=0;i<p.w.length;i++){const y=r+(d=='v'?i:0),z=c+(d=='h'?i:0),g=G[y+','+z]||(G[y+','+z]={ch:p.w[i]});g[d]=1}};
- const fits=(w,r,c,d)=>{const a=d=='v'?1:0,b=1-a,n=w.length;if(at(r-a,c-b)||at(r+a*n,c+b*n))return 0;let x=0;for(let i=0;i<n;i++){const y=r+a*i,z=c+b*i,g=at(y,z);if(g){if(g.ch!=w[i]||g[d])return 0;x++}else if(at(y+b,z+a)||at(y-b,z-a))return 0}return x};
- const bb=()=>{let a=1e9,b=-1e9,c=1e9,d=-1e9;for(const p of P){const n=p.w.length-1,e=p.d=='h'?[p.r,p.c+n]:[p.r+n,p.c];a=Math.min(a,p.r);b=Math.max(b,e[0]);c=Math.min(c,p.c);d=Math.max(d,e[1])}return[a,b,c,d]};
+ const put=(x,r,c,d)=>{const a=d=='v'?1:0,b=1-a,p={w:x[0],q:x[1],r,c,d,kr:r-a,kc:c-b};P.push(p);K[p.kr+','+p.kc]=p;for(let i=0;i<p.w.length;i++){const y=r+a*i,z=c+b*i,g=G[y+','+z]||(G[y+','+z]={ch:p.w[i]});g[d]=1}};
+ const fits=(w,r,c,d)=>{const a=d=='v'?1:0,b=1-a,n=w.length;if(at(r-a,c-b)||at(r+a*n,c+b*n)||K[(r-a)+','+(c-b)])return 0;let x=0;for(let i=0;i<n;i++){const y=r+a*i,z=c+b*i,g=at(y,z);if(K[y+','+z])return 0;if(g){if(g.ch!=w[i]||g[d])return 0;x++}else if(at(y+b,z+a)||at(y-b,z-a))return 0}return x};
+ const bb=()=>{let a=1e9,b=-1e9,c=1e9,d=-1e9;for(const p of P){const n=p.w.length-1,e=p.d=='h'?[p.r,p.c+n]:[p.r+n,p.c];a=Math.min(a,p.r,p.kr);b=Math.max(b,e[0]);c=Math.min(c,p.c,p.kc);d=Math.max(d,e[1])}return[a,b,c,d]};
  put(f,0,0,'h');
  for(const x of W){if(P.length>=10)break;const w=x[0],o=[],[a,b,c,d]=bb();
   for(const p of P)for(let i=0;i<p.w.length;i++)for(let j=0;j<w.length;j++)if(p.w[i]==w[j]){
-   const nd=p.d=='h'?'v':'h',cr=p.d=='h'?p.r:p.r+i,cc=p.d=='h'?p.c+i:p.c,r=nd=='v'?cr-j:cr,cl=nd=='h'?cc-j:cc,
-   r2=r+(nd=='v'?w.length-1:0),c2=cl+(nd=='h'?w.length-1:0);
-   if(Math.max(b,r2)-Math.min(a,r)<14&&Math.max(d,c2)-Math.min(c,cl)<12){const s=fits(w,r,cl,nd);if(s)o.push([r,cl,nd,s])}}
+   const nd=p.d=='h'?'v':'h',cr=p.d=='h'?p.r:p.r+i,cc=p.d=='h'?p.c+i:p.c,r=nd=='v'?cr-j:cr,cl2=nd=='h'?cc-j:cc,
+   r2=r+(nd=='v'?w.length-1:0),c2=cl2+(nd=='h'?w.length-1:0),rk=r-(nd=='v'?1:0),ck=cl2-(nd=='h'?1:0);
+   if(Math.max(b,r2)-Math.min(a,rk)<14&&Math.max(d,c2)-Math.min(c,ck)<13){const s=fits(w,r,cl2,nd);if(s)o.push([r,cl2,nd,s])}}
   if(o.length){o.sort((u,v)=>v[3]-u[3]);const t=o[Math.min(o.length-1,R()*3|0)];put(x,t[0],t[1],t[2])}}
  if(P.length<8)continue;
- const [a,b,c,d]=bb(),H={};
+ const [a,b,c,d]=bb(),H={},CK={};
  for(const q in G){const[y,z]=q.split(',').map(Number);H[(y-a)+','+(z-c)]=G[q]}
- for(const p of P){p.r-=a;p.c-=c}
- P.sort((u,v)=>u.r-v.r||u.c-v.c);let n=0,l='';for(const p of P){const q=p.r+','+p.c;if(q!=l){n++;l=q}p.n=n}
- return{P,G:H,R:b-a+1,C:d-c+1}}}
-const cnt=i=>Array.from({length:10},(_,n)=>S.p[i+'-'+(n+1)]&&S.p[i+'-'+(n+1)].done).filter(Boolean).length;
-const wa=(r,c,d)=>cur.pz.P.find(p=>p.d==d&&(d=='h'?p.r==r&&c>=p.c&&c<p.c+p.w.length:p.c==c&&r>=p.r&&r<p.r+p.w.length));
-function go(v,i,n){V={v,i,n};if(v=='game'){const pz=gen(CATS[i].w,n),p=pz.P[0];cur={pz,u:(S.p[i+'-'+n]||{}).u||{},sel:[p.r,p.c],dir:p.d,bad:{},done:(S.p[i+'-'+n]||{}).done}}render();scrollTo(0,0)}
-function tap(r,c){const s=cur.sel;if(s[0]==r&&s[1]==c&&wa(r,c,'h')&&wa(r,c,'v')||!wa(r,c,cur.dir))cur.dir=cur.dir=='h'?'v':'h';cur.sel=[r,c];render()}
-function pick(r,c,d){cur.dir=d;cur.sel=[r,c];render();scrollTo(0,0)}
-function mv(n){const[r,c]=cur.sel,w=wa(r,c,cur.dir),i=(cur.dir=='h'?c-w.c:r-w.r)+n;if(i<0||i>=w.w.length)return;cur.sel=cur.dir=='h'?[w.r,w.c+i]:[w.r+i,w.c]}
-function key(ch){const[r,c]=cur.sel,k=r+','+c;delete cur.bad[k];
- if(ch=='<'){if(cur.u[k])delete cur.u[k];else{mv(-1);delete cur.u[cur.sel.join()]}}else{cur.u[k]=ch;mv(1)}
- cur.done=Object.keys(cur.pz.G).every(q=>cur.u[q]==cur.pz.G[q].ch);
- S.p[V.i+'-'+V.n]={u:cur.u,done:cur.done};sv();render()}
-function chk(){cur.bad={};for(const q in cur.u)if(cur.u[q]!=cur.pz.G[q].ch)cur.bad[q]=1;render()}
-function hint(){const k=cur.sel.join();cur.u[k]=cur.pz.G[k].ch;key(cur.u[k])}
-const ac=(x,r)=>{S.ac=x;sv();theme();r&&render()};
-function render(){document.body.className=V.v=='game'?'g':'';let h='';
- if(V.v=='h')h=`<div class=hd><h1>Maschinenbau KWR</h1><button class=b onclick="go('set')">⚙</button></div><div class=pad>${CATS.map((c,i)=>`<button class=cd onclick="go('cat',${i})"><b>${c.n}</b><div class=bar><i style="width:${cnt(i)*10}%"></i></div><small>${cnt(i)} von 10 gelöst</small></button>`).join('')}</div>`;
- else if(V.v=='set')h=`<div class=hd><button class=b onclick="go('h')">‹</button><h1>Einstellungen</h1></div><div class=pad><button class=cd onclick="S.dk=!S.dk;sv();theme();render()"><b>Darkmode</b> – ${S.dk?'an':'aus'}</button><div class=cd><b>Akzentfarbe</b><div class=sw>${COL.map(x=>`<i class="${x==S.ac?'on':''}" style="background:${x}" onclick="ac('${x}',1)"></i>`).join('')}<input type=color value="${S.ac}" oninput="ac(this.value)"></div></div></div>`;
- else if(V.v=='cat')h=`<div class=hd><button class=b onclick="go('h')">‹</button><h1>${CATS[V.i].n}</h1></div><div class=pad><div class=tl>${Array.from({length:10},(_,n)=>{const d=S.p[V.i+'-'+(n+1)]&&S.p[V.i+'-'+(n+1)].done;return`<button class="${d?'dn':''}" onclick="go('game',${V.i},${n+1})">${n+1}${d?' ✓':''}</button>`}).join('')}</div></div>`;
- else{const z=cur.pz,s=Math.max(24,Math.min(44,Math.floor((innerWidth-24)/z.C))),aw=wa(cur.sel[0],cur.sel[1],cur.dir),num={};z.P.forEach(p=>num[p.r+','+p.c]=p.n);
-  let g='';for(let r=0;r<z.R;r++)for(let c=0;c<z.C;c++){const k=r+','+c;if(!z.G[k]){g+='<div class="c e"></div>';continue}
-   const inw=cur.dir=='h'?r==aw.r&&c>=aw.c&&c<aw.c+aw.w.length:c==aw.c&&r>=aw.r&&r<aw.r+aw.w.length,sl=cur.sel[0]==r&&cur.sel[1]==c;
-   g+=`<div class="c${sl?' s':inw?' w':''}${cur.bad[k]?' x':''}" onclick="tap(${r},${c})">${num[k]?`<small>${num[k]}</small>`:''}${cur.u[k]||''}</div>`}
-  const L=d=>z.P.filter(p=>p.d==d).map(p=>`<div class=q onclick="pick(${p.r},${p.c},'${d}')"><b>${p.n}</b> ${p.q} <small>(${p.w.length})</small></div>`).join('');
-  h=`<div class=hd><button class=b onclick="go('cat',${V.i})">‹</button><h1>${CATS[V.i].n} ${V.n}</h1></div><div id=g style="--s:${s}px;grid-template-columns:repeat(${z.C},var(--s))">${g}</div><div class=pad><h2>Waagerecht</h2>${L('h')}<h2>Senkrecht</h2>${L('v')}</div>
-  <div class=kb><div class=cl>${cur.done?`<span><b>Gelöst!</b> Alle Begriffe stimmen.</span><button class="b p" onclick="go('cat',${V.i})">Weiter</button>`:`<span><b>${aw.n} ${cur.dir=='h'?'waagerecht':'senkrecht'}:</b> ${aw.q} (${aw.w.length})</span><button class=b onclick=chk()>Prüfen</button><button class=b onclick=hint()>Tipp</button>`}</div>
-  ${KB.map((r,i)=>`<div class=r>${[...r].map(l=>`<button onclick="key('${l}')">${l}</button>`).join('')}${i==2?'<button style="flex:2" onclick="key(\'<\')">⌫</button>':''}</div>`).join('')}</div>`}
- document.getElementById('a').innerHTML=h}
-theme();render();
+ for(const p of P){p.r-=a;p.c-=c;p.kr-=a;p.kc-=c;CK[p.kr+','+p.kc]=p;p.k=[...p.w].map((_,i)=>(p.r+(p.d=='v'?i:0))+','+(p.c+(p.d=='h'?i:0)))}
+ return{P,G:H,CK,R:b-a+1,C:d-c+1}}}
+const fr=(i,n)=>{const q=S.p[i+'-'+n]||{};return q.done?1:q.f||0};
+const cnt=i=>Array.from({length:10},(_,n)=>fr(i,n+1)==1).filter(Boolean).length;
+const wa=(k,d)=>cur.pz.P.find(p=>p.d==d&&p.k.includes(k)),ks=()=>cur.sel.join(),xy=k=>k.split(',').map(Number);
+function upd(){const z=cur.pz;cur.cw={};for(const p of z.P)if(p.k.every(k=>cur.u[k]==z.G[k].ch))p.k.forEach(k=>cur.cw[k]=1);cur.lk={...cur.cw,...cur.hint};
+ const all=Object.keys(z.G),ok=all.filter(k=>cur.u[k]==z.G[k].ch).length;cur.done=ok==all.length;cur.f=ok/all.length;
+ S.p[cur.id]={u:cur.u,hint:cur.hint,f:cur.f,done:cur.done};sv()}
+function lim(){const v=$('v'),vw=v.clientWidth,vh=v.clientHeight,z=cur.pz,f=(c,s)=>c<=s?[(s-c)/2,(s-c)/2]:[s-c,0],X=f(z.C*S0,vw),Y=f(z.R*S0,vh);return{x:[X[0]-vw/2,X[1]+vw/2],y:[Y[0]-vh/2,Y[1]+vh/2]}}
+const pos=()=>$('g').style.transform=`translate(${cur.ox}px,${cur.oy}px)`;
+function snap(){const L=lim();cur.ox=cl(cur.ox,L.x);cur.oy=cl(cur.oy,L.y);$('g').style.transition='transform .4s cubic-bezier(.2,.8,.3,1)';pos()}
+function reveal(){const v=$('v');if(!v)return;const[r,c]=cur.sel,vw=v.clientWidth,vh=v.clientHeight-(cur.kb?KH:0),x=(c+.5)*S0+cur.ox,y=(r+.5)*S0+cur.oy,m=S0;
+ if(x<m)cur.ox+=m-x;else if(x>vw-m)cur.ox-=x-(vw-m);if(y<m)cur.oy+=m-y;else if(y>vh-m)cur.oy-=y-(vh-m);const L=lim();cur.ox=cl(cur.ox,L.x);cur.oy=cl(cur.oy,L.y)}
+function open(i,n){const pz=gen(CATS[i].w,n),q=S.p[i+'-'+n]||{},p=pz.P[0],vw=innerWidth;
+ cur={id:i+'-'+n,pz,u:q.u||{},hint:q.hint||{},sel:xy(p.k[0]),dir:p.d,bad:{},kb:0,ox:pz.C*S0<=vw?(vw-pz.C*S0)/2:8,oy:8};upd()}
+function go(v,i,n,rep){V={v,i,n};if(v=='game')open(i,n);history[rep?'replaceState':'pushState'](V,'');render();scrollTo(0,0)}
+onpopstate=e=>{V=e.state||{v:'h'};if(V.v=='game'&&(!cur||cur.id!=V.i+'-'+V.n))open(V.i,V.n);render()};
+const gear=()=>V.v=='set'?history.back():go('set');
+function tap(k){if(mvd)return;if(ks()==k&&wa(k,'h')&&wa(k,'v')||!wa(k,cur.dir))cur.dir=cur.dir=='h'?'v':'h';cur.sel=xy(k);cur.kb=1;reveal();render()}
+function tapk(i){if(mvd)return;const p=cur.pz.P[i];cur.dir=p.d;cur.sel=xy(p.k[0]);cur.kb=1;reveal();render()}
+function nx(w,i,s){for(i+=s;i>=0&&i<w.k.length;i+=s)if(!cur.lk[w.k[i]])return i;return -1}
+function key(ch){const w=wa(ks(),cur.dir);let i=w.k.indexOf(ks());
+ if(ch=='<'){if(cur.lk[w.k[i]]||!cur.u[w.k[i]]){i=nx(w,i,-1);if(i<0)return}delete cur.u[w.k[i]];delete cur.bad[w.k[i]];cur.sel=xy(w.k[i])}
+ else{if(cur.lk[w.k[i]]){i=nx(w,i,1);if(i<0)return}cur.u[w.k[i]]=ch;delete cur.bad[w.k[i]];const j=nx(w,i,1);cur.sel=xy(w.k[j<0?i:j])}
+ upd();if(cur.done)cur.kb=0;reveal();render()}
+function chk(){cur.bad={};for(const k in cur.u)if(cur.u[k]!=cur.pz.G[k].ch)cur.bad[k]=1;render()}
+function hint(){const k=ks();if(cur.lk[k])return;cur.hint[k]=1;cur.u[k]=cur.pz.G[k].ch;delete cur.bad[k];upd();if(cur.done)cur.kb=0;render()}
+function ns(){const a=CATS.flatMap(c=>c.w).filter(x=>x[0].length>=5&&x[0].length<=8),x=a[Math.random()*a.length|0];let l;do{l=[...x[0]].sort(()=>Math.random()-.5)}while(l.join('')==x[0]);return{w:x[0],q:x[1],g:0,b:-1,t:l.map(c=>({c,u:0}))}}
+function stap(i){const x=sp.t[i];if(x.u||sp.g>=sp.w.length)return;if(x.c==sp.w[sp.g]){x.u=1;sp.g++;sp.b=-1}else sp.b=i;render()}
+function knob(){const k=$('knob');if(k){const a=S.h*Math.PI/180;k.style.transform=`translate(${98*Math.sin(a)}px,${-98*Math.cos(a)}px)`}}
+function hue(e){const r=$('ring').getBoundingClientRect(),a=Math.atan2(e.clientX-r.left-r.width/2,-(e.clientY-r.top-r.height/2))*180/Math.PI;S.h=Math.round((a+360)%360);sv();theme();knob()}
+let P0=null,rd=0;
+document.addEventListener('pointerdown',e=>{if(e.target.closest('#ring')){rd=1;hue(e);return}if(V.v=='game'&&e.target.closest('#v')){P0={x:e.clientX,y:e.clientY,ox:cur.ox,oy:cur.oy};mvd=0;$('g').style.transition='none'}});
+document.addEventListener('pointermove',e=>{if(rd){hue(e);return}if(!P0)return;const dx=e.clientX-P0.x,dy=e.clientY-P0.y;if(!mvd&&Math.hypot(dx,dy)<8)return;mvd=1;cur.ox=P0.ox+dx;cur.oy=P0.oy+dy;pos()});
+const up=e=>{rd=0;if(!P0)return;P0=null;if(mvd){snap();setTimeout(()=>mvd=0,80)}else if(e.type=='pointerup'&&!e.target.closest('.c')&&cur.kb){cur.kb=0;render()}};
+document.addEventListener('pointerup',up);document.addEventListener('pointercancel',up);
+function render(){const g=V.v=='game';document.body.className=$('a').className=g?'g':'';let h='';
+ if(V.v=='splash'){const done=sp.g==sp.w.length;h=`<div class=pad style="text-align:center;padding-top:calc(9vh + env(safe-area-inset-top))"><h1 style="font-size:28px;white-space:normal;line-height:1.2">Maschinenbau<br>Kreuzworträtsel</h1><p style="opacity:.75;margin:18px 8px 0">Ordne die Buchstaben zu dem gesuchten Begriff:<br><b>${sp.q}</b></p><div class=sl>${[...sp.w].map((c,i)=>`<i>${i<sp.g?c:''}</i>`).join('')}</div><div class=sl>${sp.t.map((x,i)=>`<button class="lt${x.u?' u':''}${sp.b==i?' bd':''}" onclick="stap(${i})">${x.c}</button>`).join('')}</div><p style="min-height:1.5em;margin:10px"><b>${done?'Richtig! 🎉':''}</b></p><button class="b${done?' p':''}" style="padding:12px 28px;font-size:17px" onclick="go('h',0,0,1)">${done?'Los geht’s':'Überspringen'}</button> <button class=b style="padding:12px 16px;font-size:17px" onclick="sp=ns();render()">Neues Wort</button></div>`}
+ else if(V.v=='h')h=`<div class=hd><h1>Maschinenbau KWR</h1></div><div class=pad>${CATS.map((c,i)=>`<button class=cd onclick="go('cat',${i})"><b>${c.n}</b><div class=bar><i style="width:${cnt(i)*10}%"></i></div><small>${cnt(i)} von 10 gelöst</small></button>`).join('')}</div>`;
+ else if(V.v=='set')h=`<div class=hd><button class=b onclick="history.back()">‹</button><h1>Einstellungen</h1></div><div class=pad><button class=cd onclick="S.dk=!S.dk;sv();theme();render()"><b>Darkmode</b> – ${S.dk?'an':'aus'}</button><div class=cd style="text-align:center"><b>Akzentfarbe</b><div id=ring><div id=ctr></div><div id=knob></div></div></div></div>`;
+ else if(V.v=='cat')h=`<div class=hd><button class=b onclick="history.back()">‹</button><h1>${CATS[V.i].n}</h1></div><div class=pad><div class=tl>${Array.from({length:10},(_,n)=>`<button class=tb style="--f:${fr(V.i,n+1)*100}" onclick="go('game',${V.i},${n+1})"><span>${n+1}${fr(V.i,n+1)==1?' ✓':''}</span></button>`).join('')}</div></div>`;
+ else{const z=cur.pz,aw=wa(ks(),cur.dir);let c2='';
+  for(let r=0;r<z.R;r++)for(let c=0;c<z.C;c++){const k=r+','+c,q=z.CK[k];
+   if(q){const n=q.q.length;c2+=`<div class="c k ${q.d}" style="font-size:${n>40?8:n>30?9:10}px" onclick="tapk(${z.P.indexOf(q)})"><span>${q.q}</span><b>${q.d=='h'?'▶':'▼'}</b></div>`}
+   else if(z.G[k])c2+=`<div class="c${cur.hint[k]?' t':''}${cur.bad[k]?' x':''}${cur.cw[k]?' f':''}${k==ks()?' s':aw.k.includes(k)?' w':''}" onclick="tap('${k}')">${cur.u[k]||''}</div>`;
+   else c2+='<div class="c e"></div>'}
+  h=`<div class=hd><button class=b onclick="history.back()">‹</button><h1>Rätsel ${V.n}</h1><button class=b onclick=chk()>Prüfen</button><button class=b onclick=hint()>Tipp</button></div><div id=v><div id=g style="grid-template-columns:repeat(${z.C},68px);transform:translate(${cur.ox}px,${cur.oy}px)">${c2}</div></div>${cur.done?`<div class=dc><b>Gelöst! ✓</b><button class="b p" onclick="history.back()">Weiter</button></div>`:cur.kb?`<div class=kb>${KB.map((r,i)=>`<div class=r>${i==2?'<button style="flex:1.5" onclick="cur.kb=0;render()">⌄</button>':''}${[...r].map(l=>`<button onclick="key('${l}')">${l}</button>`).join('')}${i==2?'<button style="flex:1.5" onclick="key(\'<\')">⌫</button>':''}</div>`).join('')}</div>`:''}`}
+ $('a').innerHTML=h;knob()}
+theme();history.replaceState(V,'');sp=ns();render();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');
 </script></body></html>
