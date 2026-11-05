@@ -1,12 +1,12 @@
 <!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#ffffff"><link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png"><title>Maschinenbau KWR</title>
 <style>
 :root{--bg:#fff;--fg:#3a3a3a;--ac:hsl(0 75% 48%);--ln:color-mix(in srgb,var(--fg) 22%,var(--bg))}
 :root.dk{--bg:#2e2e2e;--fg:#fff}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0}
+html,body{margin:0;touch-action:pan-y}
 body{background:var(--bg);color:var(--fg);font:16px system-ui,sans-serif;user-select:none;overscroll-behavior:none}
 body.g{overflow:hidden}
 #a.g{height:100dvh;display:flex;flex-direction:column}
@@ -22,31 +22,34 @@ h1{font-size:18px;margin:0;flex:1;min-width:0;overflow:hidden;text-overflow:elli
 .tb{aspect-ratio:1;padding:4px;border:0;border-radius:15px;background:conic-gradient(var(--ac) calc(var(--f)*3.6deg),var(--ln) 0)}
 .tb span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:11px;background:var(--bg);color:var(--fg);font:600 17px system-ui}
 #v{flex:1;position:relative;overflow:hidden;touch-action:none}
-#g{position:absolute;left:0;top:0;display:grid;grid-auto-rows:68px;will-change:transform}
-.c{width:68px;height:68px;border:1.5px solid var(--fg);background:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:34px;position:relative}
-.c.e{border:0;background:none}
-.c.k{border:1px solid var(--ln);background:color-mix(in srgb,var(--fg) 11%,var(--bg));font-weight:600;line-height:1.1;padding:3px;text-align:center;overflow:hidden;hyphens:auto;overflow-wrap:anywhere}
+#g{position:absolute;left:0;top:0;display:grid;grid-auto-rows:66px;transform-origin:0 0;will-change:transform}
+.c{width:68px;height:68px;border:2px solid var(--fg);background:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:34px;position:relative}
+.c.e{border:0;background:none;pointer-events:none}
+.c.k{background:color-mix(in srgb,var(--fg) 11%,var(--bg));font-weight:600;line-height:1.1;padding:3px;text-align:center;overflow:hidden;hyphens:auto;overflow-wrap:anywhere}
 .c b{position:absolute;font-size:11px;line-height:1;color:var(--ac)}.c b.h{left:3px;top:calc(50% - 6px)}.c b.v{top:2px;left:calc(50% - 6px)}.c.f b{color:#fff}
 .c.k span{max-width:100%}
 .c.w{background:color-mix(in srgb,var(--fg) 13%,var(--bg))}
 .c.t{color:var(--ac)}
 .c.x{background:color-mix(in srgb,#e8a400 60%,var(--bg))}
-.c.f{background:var(--ac);border-color:var(--ac);color:#fff}
+.c.f{background:var(--ac);color:#fff}
 .c.s{outline:3px solid var(--ac);outline-offset:-3px;z-index:2}
 .c.s:not(.f){background:color-mix(in srgb,var(--fg) 22%,var(--bg))}
 .c.f.s{outline-color:var(--fg)}
-.kb{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bg);border-top:1px solid var(--ln);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
-.r{display:flex}.r button{flex:1;height:38px;margin:2px;border:1px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--fg);font:600 17px system-ui;padding:0}
+.kb{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bg);border-top:1px solid var(--ln);padding:6px 3px calc(6px + env(safe-area-inset-bottom))}
+.r{display:flex}.r button{flex:1;min-width:0;height:58px;margin:2px 1.5px;border:1px solid var(--ln);border-radius:9px;background:var(--bg);color:var(--fg);font:600 23px system-ui;padding:0}
 .dc{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:20;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-radius:14px;background:var(--bg);border:2px solid var(--ac)}
 #ring{position:relative;width:230px;height:230px;margin:18px auto 8px;border-radius:50%;touch-action:none;background:conic-gradient(hsl(0 75% 48%),hsl(60 75% 48%),hsl(120 75% 48%),hsl(180 75% 48%),hsl(240 75% 48%),hsl(300 75% 48%),hsl(360 75% 48%))}
 #ring div{position:absolute;pointer-events:none}
 #ctr{inset:34px;border-radius:50%;background:var(--bg)}
 #knob{width:30px;height:30px;left:calc(50% - 15px);top:calc(50% - 15px);border-radius:50%;background:var(--ac);border:4px solid #fff;box-shadow:0 0 0 1.5px #3a3a3a}
-.sl{display:flex;gap:6px;justify-content:center;margin:14px 0}
-.sl i{font-style:normal;width:36px;height:46px;border:1.5px solid var(--fg);border-radius:8px;display:flex;align-items:center;justify-content:center;font:700 22px system-ui;color:var(--ac)}
-.lt{width:38px;height:48px;border:1.5px solid var(--fg);border-radius:8px;background:var(--bg);color:var(--fg);font:700 22px system-ui;padding:0}
-.lt.u{opacity:.2}.lt.bd{animation:sh .3s;border-color:var(--ac)}
-@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+#fb{position:absolute;width:112px;height:112px;left:calc(50% - 56px);top:calc(50% - 56px);border-radius:50%;border:0;background:var(--ac);color:#fff;font:600 19px system-ui}
+.md{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin:10px 0;padding:15px;border-radius:14px;border:0;font:600 18px system-ui}
+#ws{display:grid;grid-template-columns:repeat(7,42px);gap:3px;justify-content:center;margin:16px auto;touch-action:none}
+#ws i{font-style:normal;width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:10px;font:700 20px system-ui;background:color-mix(in srgb,var(--fg) 8%,var(--bg))}
+#ws i.m{background:color-mix(in srgb,var(--ac) 35%,var(--bg))}
+#ws i.o{background:var(--ac);color:#fff}
+.ch{display:inline-block;margin:3px;padding:5px 12px;border:1px solid var(--ln);border-radius:20px;font-size:14px}
+.ch.d{background:var(--ac);color:#fff;border-color:var(--ac)}
 </style></head><body><button id="gear" onclick="gear()" aria-label="Einstellungen"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="8.8" stroke-width="3.4" stroke-dasharray="3.456 3.456"/><circle cx="12" cy="12" r="6.4" stroke-width="2"/><circle cx="12" cy="12" r="2.6" stroke-width="2"/></svg></button><div id="a"></div><script>
 const CATS=[
 ["Maschinenbau allgemein","WELLE|Dreht sich und überträgt Drehmoment;ZAHNRAD|Formschlüssiges Übertragungselement mit Zähnen;LAGER|Stützt rotierende Bauteile;KUPPLUNG|Verbindet zwei Wellen;SCHRAUBE|Lösbare Verbindung mit Gewinde;GEWINDE|Schraubenförmige Rille;FEDER|Speichert elastisch Energie;RIEMEN|Flexibles Zugmittel im Antrieb;KETTE|Zugmittel aus Gliedern;BREMSE|Verzögert Bewegung durch Reibung;GETRIEBE|Wandelt Drehzahl und Drehmoment;TOLERANZ|Zulässige Maßabweichung;PASSUNG|Zusammenspiel von Welle und Bohrung;FRÄSEN|Spanen mit rotierendem Werkzeug;DREHEN|Spanen mit rotierendem Werkstück;BOHREN|Erzeugt runde Löcher;SCHLEIFEN|Feinbearbeitung mit Schleifscheibe;NIETE|Unlösbares Verbindungselement;STAHL|Eisenlegierung mit wenig Kohlenstoff;ALUMINIUM|Leichtmetall mit Zeichen Al;SCHMIEDEN|Umformen durch Hammerschläge;WERKSTOFF|Material für Bauteile;FESTIGKEIT|Widerstand gegen Bruch;HÄRTE|Widerstand gegen Eindringen;SPANNUNG|Kraft pro Fläche;DREHMOMENT|Kraft mal Hebelarm;WIRKUNGSGRAD|Verhältnis von Nutzen zu Aufwand;LEISTUNG|Arbeit pro Zeit;ACHSE|Trägt Räder, überträgt kein Moment;SCHWUNGRAD|Speichert Rotationsenergie;PASSFEDER|Sichert Nabe gegen Verdrehen;SPINDEL|Gewindewelle oder Werkzeugträger;GUSS|Fertigung durch Gießen;NABE|Teil des Rades, sitzt auf der Welle"],
@@ -55,7 +58,7 @@ const CATS=[
 ["Hydraulik und Pneumatik","PUMPE|Erzeugt Volumenstrom;ZYLINDER|Linearantrieb mit Kolben;HYDRAULIKÖL|Druckflüssigkeit im System;DRUCKLUFT|Verdichtete Luft;KOMPRESSOR|Erzeugt Druckluft;VENTIL|Steuert Richtung oder Druck;WEGEVENTIL|Schaltet die Strömungsrichtung;DROSSEL|Begrenzt den Volumenstrom;SPERRVENTIL|Lässt Fluss nur in eine Richtung zu;FILTER|Hält Schmutz zurück;TANK|Speichert die Druckflüssigkeit;SPEICHER|Nimmt Druckenergie auf;HYDROMOTOR|Wandelt Druck in Drehung;PASCAL|Einheit des Drucks;BAR|Gängige Druckeinheit;SCHLAUCH|Flexible Leitung;DICHTUNG|Verhindert Leckage;LECKAGE|Ungewollter Flüssigkeitsverlust;VOLUMENSTROM|Menge pro Zeit;DRUCKVENTIL|Schützt vor Überdruck;KOLBENSTANGE|Überträgt die Kraft nach außen;STEUERUNG|Legt den Ablauf fest;SENSOR|Erfasst Messgrößen;MAGNETVENTIL|Elektrisch betätigtes Ventil;PRESSE|Hydraulische Umformmaschine;BAGGER|Mobile Maschine mit Hydraulik;HEBEBÜHNE|Hebt Fahrzeuge in der Werkstatt;VISKOSITÄT|Zähigkeit einer Flüssigkeit;KAVITATION|Dampfblasenbildung in der Pumpe;ZAHNRADPUMPE|Pumpe mit zwei Zahnrädern;GREIFER|Pneumatisches Handhabungselement;VAKUUM|Unterdruck-Zustand;PNEUMATIK|Technik mit Druckluft;HYDRAULIK|Technik mit Druckflüssigkeit"],
 ["Kunststofftechnik","THERMOPLAST|Lässt sich wiederholt schmelzen;DUROPLAST|Nach dem Aushärten nicht mehr schmelzbar;ELASTOMER|Gummielastischer Kunststoff;POLYMER|Stoff aus Makromolekülen;MONOMER|Einzelner Baustein eines Polymers;SPRITZGUSS|Verfahren für Massenteile;EXTRUSION|Kontinuierliches Pressen durch eine Düse;EXTRUDER|Maschine mit Förderschnecke;SCHNECKE|Fördert und plastifiziert Granulat;GRANULAT|Rohmaterial in Körnerform;WERKZEUG|Gibt dem Spritzling seine Form;SPRITZLING|Fertiges Teil aus der Form;ANGUSS|Kanal für die Schmelze;SCHMELZE|Flüssiger Kunststoff;SCHWINDUNG|Volumenabnahme beim Abkühlen;POLYETHYLEN|Kurz PE, häufigster Kunststoff;POLYPROPYLEN|Kurz PP;POLYAMID|Kurz PA, auch Nylon genannt;PVC|Kurzform für Polyvinylchlorid;ACRYLGLAS|Bruchfester Glasersatz;TIEFZIEHEN|Formen erwärmter Platten mit Unterdruck;BLASFORMEN|Herstellung von Flaschen und Hohlkörpern;KALANDER|Walzenstuhl für Folien;VERNETZUNG|Verbindet Molekülketten;ADDITIV|Zusatzstoff;WEICHMACHER|Macht Kunststoff flexibel;FÜLLSTOFF|Verbessert Eigenschaften oder spart Material;GLASFASER|Verstärkt Kunststoffe;VERBUND|Werkstoff aus mehreren Komponenten;EPOXID|Harz für Klebstoffe und Laminate;SILIKON|Wärmebeständiger Elastomer;RECYCLING|Wiederverwertung;KRISTALLIN|Geordnete Molekülstruktur;AMORPH|Ungeordnete Molekülstruktur;PTFE|Kurzform von Teflon"]
 ].map(c=>({n:c[0],w:c[1].split(';').map(x=>x.split('|'))}));
-const KB=['QWERTZUIOPÜ','ASDFGHJKLÖÄ','YXCVBNM'],S0=66,KH=206;
+const KB=['QWERTZUIOPÜ','ASDFGHJKLÖÄ','YXCVBNM'],S0=66,KH=204;
 const MOON='<svg viewBox="0 0 24 24" width="22" height="22"><path d="M21 13.2A9 9 0 1 1 10.8 3a7 7 0 0 0 10.2 10.2z" style="fill:var(--ac)"/></svg>',SUN='<svg viewBox="0 0 24 24" width="22" height="22" style="fill:var(--ac);stroke:var(--ac)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5" stroke="none"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>';
 let S=JSON.parse(localStorage.kwr2||'{}'),V={v:'splash'},cur,sp,mvd=0,wd=null;
 S.p=S.p||{};if(S.h==null)S.h=0;
@@ -91,8 +94,9 @@ function upd(){const z=cur.pz;cur.cw={};for(const p of z.P)if(p.k.every(k=>cur.u
 function lim(){const v=$('v'),vw=v.clientWidth,vh=v.clientHeight,z=cur.pz,f=(c,s)=>c<=s?[(s-c)/2,(s-c)/2]:[s-c,0],X=f(z.C*S0*cur.z,vw),Y=f(z.R*S0*cur.z,vh);return{x:[X[0]-vw/2,X[1]+vw/2],y:[Y[0]-vh/2,Y[1]+vh/2]}}
 const pos=()=>$('g').style.transform=`translate(${cur.ox}px,${cur.oy}px) scale(${cur.z})`;
 function snap(){cur.z=cl(cur.z,[.5,1.8]);const L=lim();cur.ox=cl(cur.ox,L.x);cur.oy=cl(cur.oy,L.y);$('g').style.transition='transform .4s cubic-bezier(.2,.8,.3,1)';pos()}
-function reveal(){const v=$('v');if(!v)return;const[r,c]=cur.sel,vw=v.clientWidth,vh=v.clientHeight-(cur.kb?KH:0),x=(c+.5)*S0*cur.z+cur.ox,y=(r+.5)*S0*cur.z+cur.oy,m=S0;
- if(x<m)cur.ox+=m-x;else if(x>vw-m)cur.ox-=x-(vw-m);if(y<m)cur.oy+=m-y;else if(y>vh-m)cur.oy-=y-(vh-m);const L=lim();cur.ox=cl(cur.ox,L.x);cur.oy=cl(cur.oy,L.y)}
+function reveal(){const v=$('v');if(!v)return;const[r,c]=cur.sel,z=cur.z,s=S0*z,vw=v.clientWidth,vh=v.clientHeight-(cur.kb?KH:0),x=c*S0*z+cur.ox,y=r*S0*z+cur.oy,o=[cur.ox,cur.oy];
+ if(x<4)cur.ox+=4-x;else if(x+s>vw-4)cur.ox-=x+s-vw+4;if(y<4)cur.oy+=4-y;else if(y+s>vh-4)cur.oy-=y+s-vh+4;
+ if(o[0]!=cur.ox||o[1]!=cur.oy)cur.po=o}
 function open(i,n){const pz=gen(CATS[i].w,n),q=S.p[i+'-'+n]||{},p=pz.P[0],vw=innerWidth;
  cur={id:i+'-'+n,pz,u:q.u||{},hint:q.hint||{},sel:xy(p.k[0]),dir:p.d,bad:{},kb:0,fs:{},z:1,ox:pz.C*S0<=vw?(vw-pz.C*S0)/2:8,oy:8};upd()}
 function go(v,i,n,rep){V={v,i,n};if(v=='game')open(i,n);history[rep?'replaceState':'pushState'](V,'');render();scrollTo(0,0)}
@@ -151,7 +155,7 @@ function render(){const g=V.v=='game';document.body.className=$('a').className=g
    else if(z.G[k])c2+=`<div class="c${cur.hint[k]?' t':''}${cur.bad[k]?' x':''}${cur.cw[k]?' f':''}${k==ks()?' s':aw.k.includes(k)?' w':''}" onclick="tap('${k}')">${(st[k]||[]).map(d=>`<b class="${d}">${d=='h'?'▶':'▼'}</b>`).join('')}${cur.u[k]||''}</div>`;
    else c2+='<div class="c e"></div>'}
   h=`<div class=hd><button class=b onclick="leave()">‹</button><h1>Rätsel ${V.n}</h1><button class=b onclick=chk()>Prüfen</button><button class=b onclick=hint()>Tipp</button></div><div id=v><div id=g style="grid-template-columns:repeat(${z.C},66px);transform:translate(${cur.ox}px,${cur.oy}px) scale(${cur.z})">${c2}</div></div>${cur.done?`<div class=dc><b>Gelöst! ✓</b><button class="b p" onclick="leave()">Weiter</button></div>`:cur.kb?`<div class=kb>${KB.map((r,i)=>`<div class=r>${i==2?'<button style="flex:1.5" onclick="closeKb()">⌄</button>':''}${[...r].map(l=>`<button onclick="key('${l}')">${l}</button>`).join('')}${i==2?'<button style="flex:1.5" onclick="key(\'<\')">⌫</button>':''}</div>`).join('')}</div>`:''}`}
- $('a').innerHTML=h;knob();if(g)fit()}
+ $('a').innerHTML=h;knob();if(g){fit();if(cur.po){const e=$('g'),p=cur.po;cur.po=0;e.style.transform=`translate(${p[0]}px,${p[1]}px) scale(${cur.z})`;e.offsetWidth;e.style.transition='transform .22s ease-out';pos()}}}
 theme();history.replaceState(V,'');sp=ns();render();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');
 </script></body></html>
