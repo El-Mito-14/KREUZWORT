@@ -1,12 +1,12 @@
 <!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#ffffff"><link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png"><title>Maschinenbau KWR</title>
 <style>
 :root{--bg:#fff;--fg:#3a3a3a;--ac:hsl(0 75% 48%);--ln:color-mix(in srgb,var(--fg) 22%,var(--bg))}
 :root.dk{--bg:#2e2e2e;--fg:#fff}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;touch-action:pan-y}
+html,body{margin:0}
 body{background:var(--bg);color:var(--fg);font:16px system-ui,sans-serif;user-select:none;overscroll-behavior:none}
 body.g{overflow:hidden}
 #a.g{height:100dvh;display:flex;flex-direction:column}
@@ -22,35 +22,31 @@ h1{font-size:18px;margin:0;flex:1;min-width:0;overflow:hidden;text-overflow:elli
 .tb{aspect-ratio:1;padding:4px;border:0;border-radius:15px;background:conic-gradient(var(--ac) calc(var(--f)*3.6deg),var(--ln) 0)}
 .tb span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:11px;background:var(--bg);color:var(--fg);font:600 17px system-ui}
 #v{flex:1;position:relative;overflow:hidden;touch-action:none}
-#g{position:absolute;left:0;top:0;display:grid;grid-auto-rows:66px;transform-origin:0 0;will-change:transform}
-.c{width:68px;height:68px;border:2px solid var(--fg);background:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:34px;position:relative}
-.c.e{border:0;background:none;pointer-events:none}
-.c.k{background:color-mix(in srgb,var(--fg) 11%,var(--bg));font-weight:500;line-height:1.1;padding:3px;text-align:center;overflow:hidden;hyphens:auto;word-break:break-word}
-.k b{position:absolute;font-size:9px;color:var(--ac)}
-.k.h{padding-right:12px}.k.h b{right:2px;top:calc(50% - 6px)}
-.k.v{padding-bottom:12px}.k.v b{bottom:1px;left:calc(50% - 5px)}
+#g{position:absolute;left:0;top:0;display:grid;grid-auto-rows:68px;will-change:transform}
+.c{width:68px;height:68px;border:1.5px solid var(--fg);background:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:34px;position:relative}
+.c.e{border:0;background:none}
+.c.k{border:1px solid var(--ln);background:color-mix(in srgb,var(--fg) 11%,var(--bg));font-weight:600;line-height:1.1;padding:3px;text-align:center;overflow:hidden;hyphens:auto;overflow-wrap:anywhere}
+.c b{position:absolute;font-size:11px;line-height:1;color:var(--ac)}.c b.h{left:3px;top:calc(50% - 6px)}.c b.v{top:2px;left:calc(50% - 6px)}.c.f b{color:#fff}
+.c.k span{max-width:100%}
 .c.w{background:color-mix(in srgb,var(--fg) 13%,var(--bg))}
 .c.t{color:var(--ac)}
 .c.x{background:color-mix(in srgb,#e8a400 60%,var(--bg))}
-.c.f{background:var(--ac);color:#fff}
-.c.s{outline:3px solid var(--ac);outline-offset:-3px}
+.c.f{background:var(--ac);border-color:var(--ac);color:#fff}
+.c.s{outline:3px solid var(--ac);outline-offset:-3px;z-index:2}
 .c.s:not(.f){background:color-mix(in srgb,var(--fg) 22%,var(--bg))}
 .c.f.s{outline-color:var(--fg)}
-.kb{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bg);border-top:1px solid var(--ln);padding:6px 3px calc(6px + env(safe-area-inset-bottom))}
-.r{display:flex}.r button{flex:1;min-width:0;height:58px;margin:2px 1.5px;border:1px solid var(--ln);border-radius:9px;background:var(--bg);color:var(--fg);font:600 23px system-ui;padding:0}
+.kb{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bg);border-top:1px solid var(--ln);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+.r{display:flex}.r button{flex:1;height:38px;margin:2px;border:1px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--fg);font:600 17px system-ui;padding:0}
 .dc{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:20;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-radius:14px;background:var(--bg);border:2px solid var(--ac)}
 #ring{position:relative;width:230px;height:230px;margin:18px auto 8px;border-radius:50%;touch-action:none;background:conic-gradient(hsl(0 75% 48%),hsl(60 75% 48%),hsl(120 75% 48%),hsl(180 75% 48%),hsl(240 75% 48%),hsl(300 75% 48%),hsl(360 75% 48%))}
 #ring div{position:absolute;pointer-events:none}
 #ctr{inset:34px;border-radius:50%;background:var(--bg)}
 #knob{width:30px;height:30px;left:calc(50% - 15px);top:calc(50% - 15px);border-radius:50%;background:var(--ac);border:4px solid #fff;box-shadow:0 0 0 1.5px #3a3a3a}
-#fb{position:absolute;width:112px;height:112px;left:calc(50% - 56px);top:calc(50% - 56px);border-radius:50%;border:0;background:var(--ac);color:#fff;font:600 19px system-ui}
-.md{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin:10px 0;padding:15px;border-radius:14px;border:0;font:600 18px system-ui}
-#ws{display:grid;grid-template-columns:repeat(7,42px);gap:3px;justify-content:center;margin:16px auto;touch-action:none}
-#ws i{font-style:normal;width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:10px;font:700 20px system-ui;background:color-mix(in srgb,var(--fg) 8%,var(--bg))}
-#ws i.m{background:color-mix(in srgb,var(--ac) 35%,var(--bg))}
-#ws i.o{background:var(--ac);color:#fff}
-.ch{display:inline-block;margin:3px;padding:5px 12px;border:1px solid var(--ln);border-radius:20px;font-size:14px}
-.ch.d{background:var(--ac);color:#fff;border-color:var(--ac)}
+.sl{display:flex;gap:6px;justify-content:center;margin:14px 0}
+.sl i{font-style:normal;width:36px;height:46px;border:1.5px solid var(--fg);border-radius:8px;display:flex;align-items:center;justify-content:center;font:700 22px system-ui;color:var(--ac)}
+.lt{width:38px;height:48px;border:1.5px solid var(--fg);border-radius:8px;background:var(--bg);color:var(--fg);font:700 22px system-ui;padding:0}
+.lt.u{opacity:.2}.lt.bd{animation:sh .3s;border-color:var(--ac)}
+@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 </style></head><body><button id="gear" onclick="gear()" aria-label="Einstellungen"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="8.8" stroke-width="3.4" stroke-dasharray="3.456 3.456"/><circle cx="12" cy="12" r="6.4" stroke-width="2"/><circle cx="12" cy="12" r="2.6" stroke-width="2"/></svg></button><div id="a"></div><script>
 const CATS=[
 ["Maschinenbau allgemein","WELLE|Dreht sich und überträgt Drehmoment;ZAHNRAD|Formschlüssiges Übertragungselement mit Zähnen;LAGER|Stützt rotierende Bauteile;KUPPLUNG|Verbindet zwei Wellen;SCHRAUBE|Lösbare Verbindung mit Gewinde;GEWINDE|Schraubenförmige Rille;FEDER|Speichert elastisch Energie;RIEMEN|Flexibles Zugmittel im Antrieb;KETTE|Zugmittel aus Gliedern;BREMSE|Verzögert Bewegung durch Reibung;GETRIEBE|Wandelt Drehzahl und Drehmoment;TOLERANZ|Zulässige Maßabweichung;PASSUNG|Zusammenspiel von Welle und Bohrung;FRÄSEN|Spanen mit rotierendem Werkzeug;DREHEN|Spanen mit rotierendem Werkstück;BOHREN|Erzeugt runde Löcher;SCHLEIFEN|Feinbearbeitung mit Schleifscheibe;NIETE|Unlösbares Verbindungselement;STAHL|Eisenlegierung mit wenig Kohlenstoff;ALUMINIUM|Leichtmetall mit Zeichen Al;SCHMIEDEN|Umformen durch Hammerschläge;WERKSTOFF|Material für Bauteile;FESTIGKEIT|Widerstand gegen Bruch;HÄRTE|Widerstand gegen Eindringen;SPANNUNG|Kraft pro Fläche;DREHMOMENT|Kraft mal Hebelarm;WIRKUNGSGRAD|Verhältnis von Nutzen zu Aufwand;LEISTUNG|Arbeit pro Zeit;ACHSE|Trägt Räder, überträgt kein Moment;SCHWUNGRAD|Speichert Rotationsenergie;PASSFEDER|Sichert Nabe gegen Verdrehen;SPINDEL|Gewindewelle oder Werkzeugträger;GUSS|Fertigung durch Gießen;NABE|Teil des Rades, sitzt auf der Welle"],
@@ -98,19 +94,23 @@ function snap(){cur.z=cl(cur.z,[.5,1.8]);const L=lim();cur.ox=cl(cur.ox,L.x);cur
 function reveal(){const v=$('v');if(!v)return;const[r,c]=cur.sel,vw=v.clientWidth,vh=v.clientHeight-(cur.kb?KH:0),x=(c+.5)*S0*cur.z+cur.ox,y=(r+.5)*S0*cur.z+cur.oy,m=S0;
  if(x<m)cur.ox+=m-x;else if(x>vw-m)cur.ox-=x-(vw-m);if(y<m)cur.oy+=m-y;else if(y>vh-m)cur.oy-=y-(vh-m);const L=lim();cur.ox=cl(cur.ox,L.x);cur.oy=cl(cur.oy,L.y)}
 function open(i,n){const pz=gen(CATS[i].w,n),q=S.p[i+'-'+n]||{},p=pz.P[0],vw=innerWidth;
- cur={id:i+'-'+n,pz,u:q.u||{},hint:q.hint||{},sel:xy(p.k[0]),dir:p.d,bad:{},kb:0,z:1,ox:pz.C*S0<=vw?(vw-pz.C*S0)/2:8,oy:8};upd()}
+ cur={id:i+'-'+n,pz,u:q.u||{},hint:q.hint||{},sel:xy(p.k[0]),dir:p.d,bad:{},kb:0,fs:{},z:1,ox:pz.C*S0<=vw?(vw-pz.C*S0)/2:8,oy:8};upd()}
 function go(v,i,n,rep){V={v,i,n};if(v=='game')open(i,n);history[rep?'replaceState':'pushState'](V,'');render();scrollTo(0,0)}
-onpopstate=e=>{V=e.state||{v:'h'};if(V.v=='game'&&(!cur||cur.id!=V.i+'-'+V.n))open(V.i,V.n);render()};
+onpopstate=e=>{const s=e.state||{v:'h'};if(V.v=='game'&&s.v=='game'&&!s.kb&&cur&&cur.kb&&s.i==V.i&&s.n==V.n){cur.kb=0;V=s;render();return}V=s;if(V.v=='game'&&(!cur||cur.id!=V.i+'-'+V.n))open(V.i,V.n);render()};
+function openKb(){if(!cur.kb){cur.kb=1;history.pushState({...V,kb:1},'')}}
+function closeKb(){if(cur.kb)history.back()}
+function leave(){history.go(cur.kb?-2:-1)}
+function fit(){document.querySelectorAll('#g .k').forEach(el=>{const i=el.dataset.i;if(cur.fs[i]){el.style.fontSize=cur.fs[i]+'px';return}let s=15;const sp2=el.firstChild;do{el.style.fontSize=s+'px';s-=.5}while(sp2.offsetHeight>el.clientHeight-6&&s>7);cur.fs[i]=s+.5})}
 const gear=()=>V.v=='set'?history.back():go('set');
-function tap(k){if(mvd)return;if(ks()==k&&wa(k,'h')&&wa(k,'v')||!wa(k,cur.dir))cur.dir=cur.dir=='h'?'v':'h';cur.sel=xy(k);cur.kb=1;reveal();render()}
-function tapk(i){if(mvd)return;const p=cur.pz.P[i];cur.dir=p.d;cur.sel=xy(p.k[0]);cur.kb=1;reveal();render()}
+function tap(k){if(mvd)return;if(ks()==k&&wa(k,'h')&&wa(k,'v')||!wa(k,cur.dir))cur.dir=cur.dir=='h'?'v':'h';cur.sel=xy(k);openKb();reveal();render()}
+function tapk(i){if(mvd)return;const p=cur.pz.P[i];cur.dir=p.d;cur.sel=xy(p.k[0]);openKb();reveal();render()}
 function nx(w,i,s){for(i+=s;i>=0&&i<w.k.length;i+=s)if(!cur.lk[w.k[i]])return i;return -1}
 function key(ch){const w=wa(ks(),cur.dir);let i=w.k.indexOf(ks());
  if(ch=='<'){if(cur.lk[w.k[i]]||!cur.u[w.k[i]]){i=nx(w,i,-1);if(i<0)return}delete cur.u[w.k[i]];delete cur.bad[w.k[i]];cur.sel=xy(w.k[i])}
  else{if(cur.lk[w.k[i]]){i=nx(w,i,1);if(i<0)return}cur.u[w.k[i]]=ch;delete cur.bad[w.k[i]];const j=nx(w,i,1);cur.sel=xy(w.k[j<0?i:j])}
- upd();if(cur.done)cur.kb=0;reveal();render()}
+ upd();if(cur.done)closeKb();reveal();render()}
 function chk(){cur.bad={};for(const k in cur.u)if(cur.u[k]!=cur.pz.G[k].ch)cur.bad[k]=1;render()}
-function hint(){const k=ks();if(cur.lk[k])return;cur.hint[k]=1;cur.u[k]=cur.pz.G[k].ch;delete cur.bad[k];upd();if(cur.done)cur.kb=0;render()}
+function hint(){const k=ks();if(cur.lk[k])return;cur.hint[k]=1;cur.u[k]=cur.pz.G[k].ch;delete cur.bad[k];upd();if(cur.done)closeKb();render()}
 function ns(){const a=[...new Set(CATS.flatMap(c=>c.w).map(x=>x[0]))].filter(w=>w.length>=4&&w.length<=7),N=7,g=Array(49).fill(''),ws=[],rs=Math.random;
  for(let n=0;ws.length<3&&n<300;n++){const w=a[rs()*a.length|0];if(ws.some(x=>x.w==w))continue;const v=rs()<.5,r=rs()*(v?N-w.length+1:N)|0,c=rs()*(v?N:N-w.length+1)|0,id=[...w].map((_,i)=>(r+(v?i:0))*N+c+(v?0:i));if(id.some(i=>g[i]))continue;id.forEach((i,j)=>g[i]=w[j]);ws.push({w,id,f:0})}
  const L='ABCDEFGHIKLMNOPRSTUÄÖÜ';for(let i=0;i<49;i++)if(!g[i])g[i]=L[rs()*L.length|0];
@@ -138,20 +138,20 @@ const up=e=>{
  if(wd){const w=sp.sel.map(i=>sp.g[i]).join('');for(const x of sp.ws)if(!x.f&&(w==x.w||[...w].reverse().join('')==x.w))x.f=1;wd=null;sp.sel=[];render();return}
  rd=0;if(!pt.has(e.pointerId))return;pt.delete(e.pointerId);
  if(pt.size){mvd=1;base();return}
- G0=null;if(mvd){snap();setTimeout(()=>mvd=0,80)}else if(e.type=='pointerup'&&!e.target.closest('.c')&&cur.kb){cur.kb=0;render()}};
+ G0=null;if(mvd){snap();setTimeout(()=>mvd=0,80)}else if(e.type=='pointerup'&&!e.target.closest('.c')&&cur.kb){closeKb()}};
 document.addEventListener('pointerup',up);document.addEventListener('pointercancel',up);
 function render(){const g=V.v=='game';document.body.className=$('a').className=g?'g':'';let h='';
  if(V.v=='splash'){const done=sp.ws.every(x=>x.f),fd=sp.ws.filter(x=>x.f).flatMap(x=>x.id);h=`<div class=pad style="text-align:center;padding-top:calc(7vh + env(safe-area-inset-top))"><h1 style="font-size:28px;white-space:normal;line-height:1.2">Maschinenbau<br>Kreuzworträtsel</h1><p style="opacity:.75;margin:14px 8px 0">Wische über die Buchstaben und finde die drei versteckten Begriffe!</p><div id=ws>${sp.g.map((c,i)=>`<i data-i=${i}${fd.includes(i)?' class=o':''}>${c}</i>`).join('')}</div><div>${sp.ws.map(x=>`<span class="ch${x.f?' d':''}">${x.w}</span>`).join('')}</div><p style="min-height:1.5em;margin:10px"><b>${done?'Geschafft! 🎉':''}</b></p><button class="b${done?' p':''}" style="padding:12px 28px;font-size:17px" onclick="go('h',0,0,1)">${done?'Los geht’s':'Überspringen'}</button> <button class=b style="padding:12px 16px;font-size:17px" onclick="sp=ns();render()">Neues Rätsel</button></div>`}
  else if(V.v=='h')h=`<div class=hd><h1>Maschinenbau KWR</h1></div><div class=pad>${CATS.map((c,i)=>`<button class=cd onclick="go('cat',${i})"><b>${c.n}</b><div class=bar><i style="width:${cnt(i)*10}%"></i></div><small>${cnt(i)} von 10 gelöst</small></button>`).join('')}</div>`;
  else if(V.v=='set'){const d=S.dk;h=`<div class=hd><button class=b onclick="history.back()">‹</button><h1>Einstellungen</h1></div><div class=pad><button class=md style="${d?'background:#fff;color:#3a3a3a':'background:#3a3a3a;color:#fff'}" onclick="S.dk=!S.dk;sv();theme();render()">${d?SUN:MOON}<span>${d?'Lightmode':'Darkmode'}</span></button><div class=cd style="text-align:center"><b>Akzentfarbe</b><div id=ring><div id=ctr></div><div id=knob></div><button id=fb onclick="history.back()">Fertig</button></div></div></div>`}
  else if(V.v=='cat')h=`<div class=hd><button class=b onclick="history.back()">‹</button><h1>${CATS[V.i].n}</h1></div><div class=pad><div class=tl>${Array.from({length:10},(_,n)=>`<button class=tb style="--f:${fr(V.i,n+1)*100}" onclick="go('game',${V.i},${n+1})"><span>${n+1}${fr(V.i,n+1)==1?' ✓':''}</span></button>`).join('')}</div></div>`;
- else{const z=cur.pz,aw=wa(ks(),cur.dir);let c2='';
+ else{const z=cur.pz,aw=wa(ks(),cur.dir),st={};z.P.forEach(p=>(st[p.k[0]]=st[p.k[0]]||[]).push(p.d));let c2='';
   for(let r=0;r<z.R;r++)for(let c=0;c<z.C;c++){const k=r+','+c,q=z.CK[k];
-   if(q){const n=q.q.length;c2+=`<div class="c k ${q.d}" style="font-size:${n>40?8:n>30?9:10}px" onclick="tapk(${z.P.indexOf(q)})"><span>${q.q}</span><b>${q.d=='h'?'▶':'▼'}</b></div>`}
-   else if(z.G[k])c2+=`<div class="c${cur.hint[k]?' t':''}${cur.bad[k]?' x':''}${cur.cw[k]?' f':''}${k==ks()?' s':aw.k.includes(k)?' w':''}" onclick="tap('${k}')">${cur.u[k]||''}</div>`;
+   if(q){const i=z.P.indexOf(q);c2+=`<div class="c k ${q.d}" data-i="${i}" style="font-size:${cur.fs[i]||15}px" onclick="tapk(${i})"><span>${q.q}</span></div>`}
+   else if(z.G[k])c2+=`<div class="c${cur.hint[k]?' t':''}${cur.bad[k]?' x':''}${cur.cw[k]?' f':''}${k==ks()?' s':aw.k.includes(k)?' w':''}" onclick="tap('${k}')">${(st[k]||[]).map(d=>`<b class="${d}">${d=='h'?'▶':'▼'}</b>`).join('')}${cur.u[k]||''}</div>`;
    else c2+='<div class="c e"></div>'}
-  h=`<div class=hd><button class=b onclick="history.back()">‹</button><h1>Rätsel ${V.n}</h1><button class=b onclick=chk()>Prüfen</button><button class=b onclick=hint()>Tipp</button></div><div id=v><div id=g style="grid-template-columns:repeat(${z.C},66px);transform:translate(${cur.ox}px,${cur.oy}px) scale(${cur.z})">${c2}</div></div>${cur.done?`<div class=dc><b>Gelöst! ✓</b><button class="b p" onclick="history.back()">Weiter</button></div>`:cur.kb?`<div class=kb>${KB.map((r,i)=>`<div class=r>${i==2?'<button style="flex:1.5" onclick="cur.kb=0;render()">⌄</button>':''}${[...r].map(l=>`<button onclick="key('${l}')">${l}</button>`).join('')}${i==2?'<button style="flex:1.5" onclick="key(\'<\')">⌫</button>':''}</div>`).join('')}</div>`:''}`}
- $('a').innerHTML=h;knob()}
+  h=`<div class=hd><button class=b onclick="leave()">‹</button><h1>Rätsel ${V.n}</h1><button class=b onclick=chk()>Prüfen</button><button class=b onclick=hint()>Tipp</button></div><div id=v><div id=g style="grid-template-columns:repeat(${z.C},66px);transform:translate(${cur.ox}px,${cur.oy}px) scale(${cur.z})">${c2}</div></div>${cur.done?`<div class=dc><b>Gelöst! ✓</b><button class="b p" onclick="leave()">Weiter</button></div>`:cur.kb?`<div class=kb>${KB.map((r,i)=>`<div class=r>${i==2?'<button style="flex:1.5" onclick="closeKb()">⌄</button>':''}${[...r].map(l=>`<button onclick="key('${l}')">${l}</button>`).join('')}${i==2?'<button style="flex:1.5" onclick="key(\'<\')">⌫</button>':''}</div>`).join('')}</div>`:''}`}
+ $('a').innerHTML=h;knob();if(g)fit()}
 theme();history.replaceState(V,'');sp=ns();render();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');
 </script></body></html>
