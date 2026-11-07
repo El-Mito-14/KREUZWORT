@@ -134,15 +134,18 @@ function key(ch){const w=wa(ks(),cur.dir);let i=w.k.indexOf(ks());
 function chk(){cur.bad={};for(const k in cur.u)if(cur.u[k]!=cur.pz.G[k].ch)cur.bad[k]=1;render()}
 function hint(){const k=ks();if(cur.lk[k])return;cur.hint[k]=1;cur.u[k]=cur.pz.G[k].ch;delete cur.bad[k];upd();if(cur.done)closeKb();render()}
 function mkSp(){const W=innerWidth,H=innerHeight,cx=W/2,cy=H*.48,off=[[-110,-90],[60,-125],[105,5],[-15,75],[-125,35]],rs=Math.random,L=[...'START'].sort(()=>rs()-.5),
- tl=L.map((l,i)=>({l,k:1,hx:cx+off[i][0]-23,hy:cy+off[i][1]-23,ph:rs()*6.3,fx:.7+rs()*.6,fy:.6+rs()*.6,x:cx,y:cy})),A='ABDEFGHIKLMNOPRUWZÄÖÜ';
+ tl=L.map((l,i)=>({l,k:1,ox:off[i][0],oy:off[i][1],hx:cx+off[i][0]-23,hy:cy+off[i][1]-23,ph:rs()*6.3,fx:.7+rs()*.6,fy:.6+rs()*.6,x:cx,y:cy})),A='ABDEFGHIKLMNOPRUWZÄÖÜ';
  for(let i=0;i<11;i++){const an=rs()*6.28,v=14+rs()*22;tl.push({l:A[rs()*A.length|0],k:0,x:rs()*(W-46),y:rs()*(H-46),vx:Math.cos(an)*v,vy:Math.sin(an)*v})}
  return{W,H,tl,conn:[],drag:0}}
-function spStart(){const st=$('st');sp.tl.forEach((a,i)=>a.el=st.querySelector(`[data-i="${i}"]`));sp.pl=$('pl');if(sp.done)st.classList.add('ok');if(!sp.run){sp.run=1;requestAnimationFrame(tick)}}
+function spStart(){const st=$('st'),T=46,C=(v,a,b)=>Math.min(b,Math.max(a,v));
+ if(!sp.done){const s=document.querySelector('.sh').getBoundingClientRect(),k=document.querySelector('.sk').getBoundingClientRect();sp.top=s.bottom+8;sp.bot=k.top-8;const cy=(sp.top+sp.bot)/2;
+  for(const a of sp.tl){if(a.k){a.hx=sp.W/2+a.ox-T/2;a.hy=C(cy+a.oy-T/2,sp.top+14,sp.bot-T-14)}else a.y=C(a.y,sp.top,sp.bot-T)}}
+ sp.tl.forEach((a,i)=>a.el=st.querySelector(`[data-i="${i}"]`));sp.pl=$('pl');if(sp.done)st.classList.add('ok');if(!sp.run){sp.run=1;requestAnimationFrame(tick)}}
 function hit(){const n=sp.conn.length;if(n>=5)return;for(const a of sp.tl)if(a.k&&!sp.conn.includes(a)&&a.l=='START'[n]&&Math.hypot(sp.px-a.x-23,sp.py-a.y-23)<30){sp.conn.push(a);a.el.classList.add('c1');if(sp.conn.length==5)win();break}}
 function win(){sp.done=1;sp.drag=0;sp.conn.forEach((a,i)=>{a.tx=sp.W/2-123+i*50;a.ty=sp.H*.42});$('st').classList.add('ok')}
 function tick(t){if(V.v!='splash'){sp.run=0;return}requestAnimationFrame(tick);const dt=Math.min(.05,(t-(sp.t0||t))/1e3),W=sp.W,H=sp.H,T=46,s=t/1e3;sp.t0=t;
  for(const a of sp.tl){if(a.k){if(sp.done){const q=Math.min(1,dt*7);a.x+=(a.tx-a.x)*q;a.y+=(a.ty-a.y)*q}else{a.x=a.hx+Math.sin(s*a.fx+a.ph)*14;a.y=a.hy+Math.cos(s*a.fy+a.ph)*14}}
-  else{a.x+=a.vx*dt;a.y+=a.vy*dt;if(a.x<0){a.x=0;a.vx=Math.abs(a.vx)}if(a.x>W-T){a.x=W-T;a.vx=-Math.abs(a.vx)}if(a.y<0){a.y=0;a.vy=Math.abs(a.vy)}if(a.y>H-T){a.y=H-T;a.vy=-Math.abs(a.vy)}}
+  else{a.x+=a.vx*dt;a.y+=a.vy*dt;if(a.x<0){a.x=0;a.vx=Math.abs(a.vx)}if(a.x>W-T){a.x=W-T;a.vx=-Math.abs(a.vx)}if(a.y<sp.top){a.y=sp.top;a.vy=Math.abs(a.vy)}if(a.y>sp.bot-T){a.y=sp.bot-T;a.vy=-Math.abs(a.vy)}}
   if(a.el)a.el.style.transform=`translate(${a.x}px,${a.y}px)`}
  if(sp.drag&&!sp.done)hit();
  const pts=sp.conn.map(a=>`${a.x+23},${a.y+23}`);if(sp.drag&&!sp.done)pts.push(`${sp.px},${sp.py}`);if(sp.pl)sp.pl.setAttribute('points',pts.join(' '))}
